@@ -13,7 +13,7 @@ Disallow: /api/
 Disallow: /admin/
 
 # Указываем расположение sitemap
-Sitemap: https://schetchik.plus/sitemap.xml
+Sitemap: https://counterplus.ru/sitemap.xml
 
 # Время задержки между запросами (в секундах)
 Crawl-delay: 1
