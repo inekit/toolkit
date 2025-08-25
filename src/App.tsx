@@ -15,7 +15,7 @@ const App: React.FC = () => {
   return (
     <>
       {/* Яндекс.Метрика - замените на ваш ID счетчика */}
-      <YandexMetrika counterId="12345678" />
+      <YandexMetrika counterId="103888039" />
 
       <Layout>
         <Suspense fallback={<div>Загрузка...</div>}>
