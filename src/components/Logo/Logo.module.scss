@@ -1,0 +1,46 @@
+.logo {
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
+  }
+}
+
+.plusIcon {
+  .plusCircle {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .plusSymbol {
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.logo:hover .plusIcon {
+  .plusCircle {
+    fill: var(--primary-600);
+    transform: scale(1.1);
+  }
+
+  .plusSymbol {
+    stroke-width: 2.5;
+  }
+}
+
+// Анимация для плюса
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.plusIcon {
+  animation: pulse 3s ease-in-out infinite;
+}

@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Разрешаем индексацию всех страниц
+Allow: /repair/
+Allow: /bicycle/
+Allow: /other/
+Allow: /terms
+
+# Запрещаем индексацию технических файлов
+Disallow: /static/
+Disallow: /api/
+Disallow: /admin/
+
+# Указываем расположение sitemap
+Sitemap: https://schetchik.plus/sitemap.xml
+
+# Время задержки между запросами (в секундах)
+Crawl-delay: 1

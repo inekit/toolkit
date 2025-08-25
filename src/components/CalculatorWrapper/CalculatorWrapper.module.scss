@@ -1,0 +1,293 @@
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.header {
+  background: white;
+  border-radius: var(--radius-2xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-100);
+  margin-bottom: 2rem;
+}
+
+.calculatorInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  .calculatorIcon {
+    font-size: 3rem;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+
+  p {
+    color: var(--gray-600);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.difficulty {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  &.easy {
+    background: var(--success-50);
+    color: var(--success-700);
+    border: 1px solid var(--success-200);
+  }
+
+  &.medium {
+    background: var(--warning-50);
+    color: var(--warning-700);
+    border: 1px solid var(--warning-200);
+  }
+
+  &.hard {
+    background: var(--error-50);
+    color: var(--error-700);
+    border: 1px solid var(--error-200);
+  }
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  border: 1px solid var(--gray-200);
+}
+
+.tabs {
+  display: flex;
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 0.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-100);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: var(--gray-600);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--gray-50);
+    color: var(--gray-800);
+  }
+
+  &.active {
+    background: var(--primary-500);
+    color: white;
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.content {
+  background: white;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-100);
+  overflow: hidden;
+}
+
+.calculatorTab {
+  padding: 2rem;
+}
+
+.infoTab {
+  padding: 2rem;
+}
+
+.infoSection {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  p,
+  ol,
+  ul {
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+
+  ol,
+  ul {
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.relatedCalculators {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.relatedTag {
+  padding: 0.5rem 1rem;
+  background: var(--primary-50);
+  color: var(--primary-700);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  border: 1px solid var(--primary-200);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: var(--primary-100);
+    border-color: var(--primary-300);
+  }
+}
+
+.embedTab {
+  padding: 2rem;
+}
+
+.embedInfo {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+}
+
+.embedCode {
+  background: var(--gray-900);
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.codeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--gray-800);
+  color: white;
+  font-weight: 500;
+}
+
+.copyBtn {
+  padding: 0.5rem 1rem;
+  background: var(--primary-500);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: var(--primary-600);
+  }
+}
+
+.code {
+  padding: 1rem;
+  margin: 0;
+  color: var(--gray-100);
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.embedPreview {
+  h4 {
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+  }
+}
+
+.previewFrame {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1rem 0.5rem;
+  }
+
+  .header {
+    padding: 1.5rem;
+  }
+
+  .calculatorInfo {
+    flex-direction: column;
+    text-align: center;
+
+    .calculatorIcon {
+      font-size: 2.5rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
+
+  .tabs {
+    flex-direction: column;
+
+    .tab {
+      text-align: center;
+    }
+  }
+
+  .meta {
+    justify-content: center;
+  }
+}

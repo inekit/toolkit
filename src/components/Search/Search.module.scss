@@ -1,0 +1,269 @@
+.searchContainer {
+  position: relative;
+}
+
+.searchToggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: var(--gray-100);
+  }
+}
+
+.searchDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 400px;
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--gray-100);
+  z-index: 1000;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.searchForm {
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-400);
+    box-shadow: 0 0 0 3px var(--primary-100);
+  }
+
+  &::placeholder {
+    color: var(--gray-400);
+  }
+}
+
+.searchResults {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--gray-600);
+}
+
+.noResults {
+  padding: 2rem;
+  text-align: center;
+  color: var(--gray-600);
+}
+
+.resultsList {
+  padding: 0.5rem;
+}
+
+.resultItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease-in-out;
+  text-align: left;
+
+  &:hover {
+    background: var(--gray-50);
+  }
+}
+
+.resultIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.resultContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultTitle {
+  display: block;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.resultSection {
+  display: block;
+  color: var(--gray-600);
+  font-size: 0.75rem;
+}
+
+// Стили для поиска на страницах
+.pageSearch {
+  margin-bottom: 2rem;
+}
+
+.pageSearchInput {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  font-size: 1.125rem;
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-400);
+    box-shadow: 0 0 0 3px var(--primary-100);
+  }
+
+  &::placeholder {
+    color: var(--gray-400);
+  }
+}
+
+.searchInputWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: var(--gray-400);
+  pointer-events: none;
+}
+
+.clearButton {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.125rem;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--gray-600);
+    background: var(--gray-100);
+  }
+}
+
+.pageResults {
+  margin-top: 1.5rem;
+
+  h3 {
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+}
+
+.pageResultsList {
+  display: grid;
+  gap: 1rem;
+}
+
+.pageResultItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-100);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-200);
+  }
+}
+
+.pageResultItem .resultIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.pageResultItem .resultContent {
+  flex: 1;
+}
+
+.pageResultItem .resultTitle {
+  display: block;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.pageResultItem .resultDescription {
+  display: block;
+  color: var(--gray-600);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.pageResultItem .resultSection {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--primary-50);
+  color: var(--primary-700);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .searchDropdown {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .pageSearchInput {
+    font-size: 1rem;
+    padding: 0.875rem 0.875rem 0.875rem 2.5rem;
+  }
+
+  .searchIcon {
+    left: 0.875rem;
+  }
+
+  .clearButton {
+    right: 0.875rem;
+  }
+}

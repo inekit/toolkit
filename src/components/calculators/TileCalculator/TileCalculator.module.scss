@@ -1,0 +1,146 @@
+.calculator {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--gray-600);
+  }
+}
+
+.form {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-100);
+  margin-bottom: 2rem;
+}
+
+.dimensions {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+  }
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.inputGroup {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--gray-700);
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-400);
+      box-shadow: 0 0 0 3px var(--primary-100);
+    }
+
+    &::placeholder {
+      color: var(--gray-400);
+    }
+  }
+}
+
+.calculateBtn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.result {
+  background: var(--success-50);
+  border: 1px solid var(--success-200);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  text-align: center;
+
+  h3 {
+    color: var(--success-700);
+    margin-bottom: 1.5rem;
+  }
+}
+
+.resultGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.resultItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--success-200);
+
+  .label {
+    color: var(--success-700);
+    font-weight: 500;
+  }
+
+  .value {
+    color: var(--success-800);
+    font-weight: 600;
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .inputRow {
+    grid-template-columns: 1fr;
+  }
+
+  .resultItem {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

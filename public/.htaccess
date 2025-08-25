@@ -1,0 +1,23 @@
+RewriteEngine On
+
+# Если файл или директория существуют, используем их
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Перенаправляем все запросы на index.html
+RewriteRule ^(.*)$ /index.html [L]
+
+# Устанавливаем правильные MIME типы
+<FilesMatch "\.(js|mjs)$">
+    Header set Content-Type "application/javascript"
+</FilesMatch>
+
+<FilesMatch "\.css$">
+    Header set Content-Type "text/css"
+</FilesMatch>
+
+# Кэширование для статических файлов
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|svg)$">
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+</FilesMatch>
