@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import DonateWidget from '@/components/DonateWidget/DonateWidget';
 import Logo from '@/components/Logo/Logo';
@@ -12,6 +12,11 @@ import { isMobile } from 'react-device-detect';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [ableToOpenDropdown, setAbleToOpenDropdown] = useState(true);
+
+  useEffect(() => {
+    setAbleToOpenDropdown(false);
+  }, [location.pathname]);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -40,11 +45,12 @@ const Header: React.FC = () => {
                 className={`${styles.navLink} ${
                   isActive(item.path) ? styles.active : ''
                 }`}
+                onMouseEnter={() => !isMobile && setAbleToOpenDropdown(true)}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.shortTitle}
               </Link>
-              {!isMobile ? (
+              {!isMobile && ableToOpenDropdown ? (
                 <HeaderDropdown
                   section={SECTIONS.find((s) => s.id === item.id)!}
                   isOpen={true}
