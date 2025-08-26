@@ -1,5 +1,4 @@
 .calculator {
-  max-width: 700px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -91,45 +90,6 @@
   }
 }
 
-.result {
-  background: var(--success-50);
-  border: 1px solid var(--success-200);
-  border-radius: var(--radius-xl);
-  padding: 2rem;
-  text-align: center;
-
-  h3 {
-    color: var(--success-700);
-    margin-bottom: 1.5rem;
-  }
-}
-
-.resultGrid {
-  display: grid;
-  gap: 1rem;
-}
-
-.resultItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background: white;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--success-200);
-
-  .label {
-    color: var(--success-700);
-    font-weight: 500;
-  }
-
-  .value {
-    color: var(--success-800);
-    font-weight: 600;
-    font-size: 1.125rem;
-  }
-}
-
 // Специфичные стили для калькулятора плитки
 .calculator {
   // Используем общие стили из calculators.scss
@@ -165,6 +125,22 @@
       font-size: 1rem;
     }
   }
+}
+
+.resultValue {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--success-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--success-200);
+}
+
+.recommendation {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--success-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--success-200);
 }
 
 .purchaseInfo {

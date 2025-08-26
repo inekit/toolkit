@@ -530,7 +530,7 @@ const HealthCalculator: React.FC = () => {
         >
           <div className="inputGroup">
             <label>Основные параметры</label>
-            <div className="inputGrid">
+            <div className={styles.inputGrid}>
               <div>
                 <label htmlFor="weight">Вес (кг)</label>
                 <input
@@ -562,7 +562,7 @@ const HealthCalculator: React.FC = () => {
 
           <div className="inputGroup">
             <label>Дополнительные параметры</label>
-            <div className="inputRow">
+            <div className={styles.inputRow}>
               <div>
                 <label htmlFor="age">Возраст (лет)</label>
                 <input
@@ -653,7 +653,7 @@ const HealthCalculator: React.FC = () => {
 
           <div className="inputGroup">
             <label>Дополнительные параметры</label>
-            <div className="inputRow">
+            <div className={styles.inputRow}>
               <div>
                 <label htmlFor="age">Возраст (лет)</label>
                 <input
@@ -682,7 +682,7 @@ const HealthCalculator: React.FC = () => {
 
           <div className="inputGroup">
             <label>Образ жизни и цели</label>
-            <div className="inputRow">
+            <div className={styles.inputRow}>
               <div>
                 <label htmlFor="activityLevel">Уровень активности</label>
                 <select
@@ -796,7 +796,7 @@ const HealthCalculator: React.FC = () => {
 
           <div className="inputGroup">
             <label>Дополнительные измерения</label>
-            <div className="inputRow">
+            <div className={styles.inputRow}>
               <div>
                 <label htmlFor="neck">Обхват шеи</label>
                 <input
@@ -852,33 +852,33 @@ const HealthCalculator: React.FC = () => {
           <h3>Результат расчета</h3>
 
           {result.type === 'bmi' && (
-            <div className="bmiResult">
-              <div className="bmiSummary">
-                <div className="summaryItem">
-                  <span className="label">Ваш ИМТ:</span>
-                  <span className="value">{result.bmi}</span>
+            <div className={styles.bmiResult}>
+              <div className={styles.bmiSummary}>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>Ваш ИМТ:</span>
+                  <span className={styles.value}>{result.bmi}</span>
                 </div>
-                <div className="summaryItem">
-                  <span className="label">Категория:</span>
-                  <span className="value">{result.bmiCategory}</span>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>Категория:</span>
+                  <span className={styles.value}>{result.bmiCategory}</span>
                 </div>
-                <div className="summaryItem">
-                  <span className="label">Идеальный вес:</span>
-                  <span className="value">{result.idealWeight} кг</span>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>Идеальный вес:</span>
+                  <span className={styles.value}>{result.idealWeight} кг</span>
                 </div>
-                <div className="summaryItem">
-                  <span className="label">Статус веса:</span>
-                  <span className="value">{result.weightStatus}</span>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>Статус веса:</span>
+                  <span className={styles.value}>{result.weightStatus}</span>
                 </div>
               </div>
 
-              <div className="resultValue">
-                <span className="amount">{result.bmi}</span>
-                <span className="unit">ИМТ</span>
+              <div className={styles.resultValue}>
+                <span className={styles.amount}>{result.bmi}</span>
+                <span className={styles.unit}>ИМТ</span>
               </div>
 
               {result.healthRisks.length > 0 && (
-                <div className="healthRisks">
+                <div className={styles.healthRisks}>
                   <h4>Риски для здоровья:</h4>
                   <ul>
                     {result.healthRisks.map((risk: string, index: number) => (
@@ -891,43 +891,51 @@ const HealthCalculator: React.FC = () => {
           )}
 
           {result.type === 'calories' && (
-            <div className="caloriesResult">
-              <div className="caloriesSummary">
-                <div className="summaryItem">
-                  <span className="label">Базовый метаболизм (BMR):</span>
-                  <span className="value">{result.bmr} ккал/день</span>
+            <div className={styles.caloriesResult}>
+              <div className={styles.caloriesSummary}>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>
+                    Базовый метаболизм (BMR):
+                  </span>
+                  <span className={styles.value}>{result.bmr} ккал/день</span>
                 </div>
-                <div className="summaryItem">
-                  <span className="label">Общий расход энергии (TDEE):</span>
-                  <span className="value">{result.tdee} ккал/день</span>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>
+                    Общий расход энергии (TDEE):
+                  </span>
+                  <span className={styles.value}>{result.tdee} ккал/день</span>
                 </div>
-                <div className="summaryItem">
-                  <span className="label">Целевые калории:</span>
-                  <span className="value">
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>Целевые калории:</span>
+                  <span className={styles.value}>
                     {result.targetCalories} ккал/день
                   </span>
                 </div>
               </div>
 
-              <div className="resultValue">
-                <span className="amount">{result.targetCalories}</span>
-                <span className="unit">ккал/день</span>
+              <div className={styles.resultValue}>
+                <span className={styles.amount}>{result.targetCalories}</span>
+                <span className={styles.unit}>ккал/день</span>
               </div>
 
-              <div className="macrosAnalysis">
+              <div className={styles.macrosAnalysis}>
                 <h4>Рекомендуемые макронутриенты:</h4>
-                <div className="macrosGrid">
-                  <div className="macroItem protein">
-                    <span className="label">Белки:</span>
-                    <span className="value">{result.macros.protein} г</span>
+                <div className={styles.macrosGrid}>
+                  <div className={styles.macroItem + ' ' + styles.protein}>
+                    <span className={styles.label}>Белки:</span>
+                    <span className={styles.value}>
+                      {result.macros.protein} г
+                    </span>
                   </div>
-                  <div className="macroItem fat">
-                    <span className="label">Жиры:</span>
-                    <span className="value">{result.macros.fat} г</span>
+                  <div className={styles.macroItem + ' ' + styles.fat}>
+                    <span className={styles.label}>Жиры:</span>
+                    <span className={styles.value}>{result.macros.fat} г</span>
                   </div>
-                  <div className="macroItem carbs">
-                    <span className="label">Углеводы:</span>
-                    <span className="value">{result.macros.carbs} г</span>
+                  <div className={styles.macroItem + ' ' + styles.carbs}>
+                    <span className={styles.label}>Углеводы:</span>
+                    <span className={styles.value}>
+                      {result.macros.carbs} г
+                    </span>
                   </div>
                 </div>
               </div>
@@ -935,32 +943,38 @@ const HealthCalculator: React.FC = () => {
           )}
 
           {result.type === 'body-fat' && (
-            <div className="bodyFatResult">
-              <div className="bodyFatSummary">
-                <div className="summaryItem">
-                  <span className="label">Процент жира в организме:</span>
-                  <span className="value">{result.bodyFatPercentage}%</span>
+            <div className={styles.bodyFatResult}>
+              <div className={styles.bodyFatSummary}>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>
+                    Процент жира в организме:
+                  </span>
+                  <span className={styles.value}>
+                    {result.bodyFatPercentage}%
+                  </span>
                 </div>
-                <div className="summaryItem">
-                  <span className="label">Категория:</span>
-                  <span className="value">{result.bodyFatCategory}</span>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>Категория:</span>
+                  <span className={styles.value}>{result.bodyFatCategory}</span>
                 </div>
-                <div className="summaryItem">
-                  <span className="label">Сухая масса тела:</span>
-                  <span className="value">{result.leanMass} кг</span>
+                <div className={styles.summaryItem}>
+                  <span className={styles.label}>Сухая масса тела:</span>
+                  <span className={styles.value}>{result.leanMass} кг</span>
                 </div>
               </div>
 
-              <div className="resultValue">
-                <span className="amount">{result.bodyFatPercentage}%</span>
-                <span className="unit">жира в организме</span>
+              <div className={styles.resultValue}>
+                <span className={styles.amount}>
+                  {result.bodyFatPercentage}%
+                </span>
+                <span className={styles.unit}>жира в организме</span>
               </div>
             </div>
           )}
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендации:</strong>
-            <ul className="recommendationsList">
+            <ul className={styles.recommendationsList}>
               {result.recommendations.map((rec: string, index: number) => (
                 <li key={index}>{rec}</li>
               ))}

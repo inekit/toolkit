@@ -9,6 +9,22 @@
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+.calculatorForm {
+  .error {
+    color: var(--error-600);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+
+    &::before {
+      content: '⚠️';
+      font-size: 0.75rem;
+    }
+  }
+}
 
 .calculatorHeader {
   text-align: center;
@@ -109,20 +125,6 @@
 
     @media (max-width: 640px) {
       grid-template-columns: 1fr;
-    }
-  }
-
-  .error {
-    color: var(--error-600);
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-
-    &::before {
-      content: '⚠️';
-      font-size: 0.75rem;
     }
   }
 

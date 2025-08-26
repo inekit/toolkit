@@ -36,3 +36,11 @@
     margin: 0;
   }
 }
+
+.error {
+  color: var(--error-500);
+  text-align: center;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 1rem;
+}

@@ -356,41 +356,43 @@ const PaintCalculator: React.FC = () => {
         <div className="result">
           <h3>Результат расчета</h3>
 
-          <div className="paintSummary">
-            <div className="summaryItem">
-              <span className="label">Общая площадь стен:</span>
-              <span className="value">{result.wallArea} м²</span>
+          <div className={styles.paintSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Общая площадь стен:</span>
+              <span className={styles.value}>{result.wallArea} м²</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Площадь проемов:</span>
-              <span className="value">{result.openingsArea} м²</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Площадь проемов:</span>
+              <span className={styles.value}>{result.openingsArea} м²</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Площадь для покраски:</span>
-              <span className="value">{result.paintArea} м²</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Площадь для покраски:</span>
+              <span className={styles.value}>{result.paintArea} м²</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Тип краски:</span>
-              <span className="value">{result.paintType}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Тип краски:</span>
+              <span className={styles.value}>{result.paintType}</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Количество слоев:</span>
-              <span className="value">{result.coatsCount}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Количество слоев:</span>
+              <span className={styles.value}>{result.coatsCount}</span>
             </div>
           </div>
 
-          <div className="resultValue">
-            <span className="amount">{result.totalPaint}</span>
-            <span className="unit">литров краски</span>
+          <div className={styles.resultValue}>
+            <span className={styles.amount}>{result.totalPaint}</span>
+            <span className={styles.unit}>литров краски</span>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендуемые банки:</strong>
-            <div className="canRecommendations">
+            <div className={styles.canRecommendations}>
               {result.recommendedCans.map((can: any, index: number) => (
-                <div key={index} className="canItem">
+                <div key={index} className={styles.canItem}>
                   {can.count} × {can.size} л = {can.volume} л
-                  {can.note && <span className="note"> ({can.note})</span>}
+                  {can.note && (
+                    <span className={styles.note}> ({can.note})</span>
+                  )}
                 </div>
               ))}
             </div>

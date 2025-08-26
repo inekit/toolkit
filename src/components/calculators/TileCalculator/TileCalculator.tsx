@@ -379,41 +379,41 @@ const TileCalculator: React.FC = () => {
         <div className="result">
           <h3>Результат расчета</h3>
 
-          <div className="tileSummary">
-            <div className="summaryItem">
-              <span className="label">Общая площадь стен:</span>
-              <span className="value">{result.wallArea} м²</span>
+          <div className={styles.tileSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Общая площадь стен:</span>
+              <span className={styles.value}>{result.wallArea} м²</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Площадь проемов:</span>
-              <span className="value">{result.openingsArea} м²</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Площадь проемов:</span>
+              <span className={styles.value}>{result.openingsArea} м²</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Площадь для облицовки:</span>
-              <span className="value">{result.tileArea} м²</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Площадь для облицовки:</span>
+              <span className={styles.value}>{result.tileArea} м²</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Размер плитки:</span>
-              <span className="value">{result.tileSize}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Размер плитки:</span>
+              <span className={styles.value}>{result.tileSize}</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Ширина швов:</span>
-              <span className="value">{result.groutWidth} мм</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Ширина швов:</span>
+              <span className={styles.value}>{result.groutWidth} мм</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Запас на отходы:</span>
-              <span className="value">{result.wastagePercent}%</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Запас на отходы:</span>
+              <span className={styles.value}>{result.wastagePercent}%</span>
             </div>
           </div>
 
-          <div className="resultValue">
-            <span className="amount">{result.totalTiles}</span>
-            <span className="unit">плиток</span>
+          <div className={styles.resultValue}>
+            <span className={styles.amount}>{result.totalTiles}</span>
+            <span className={styles.unit}>плиток</span>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Покупка:</strong>
-            <div className="purchaseInfo">
+            <div className={styles.purchaseInfo}>
               <p>
                 <strong>Количество упаковок:</strong> {result.packsNeeded} шт.
               </p>

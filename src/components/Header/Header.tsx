@@ -7,6 +7,7 @@ import Search from '@/components/Search/Search';
 import { APP_CONFIG } from '@/config/app';
 import { SECTIONS } from '@/config/sections';
 import styles from './Header.module.scss';
+import { isMobile } from 'react-device-detect';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,8 +38,8 @@ const Header: React.FC = () => {
             <div
               key={item.path}
               className={styles.navItem}
-              onMouseEnter={() => setActiveDropdown(item.id)}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => !isMobile && setActiveDropdown(item.id)}
+              onMouseLeave={() => !isMobile && setActiveDropdown(null)}
             >
               <Link
                 to={item.path}
@@ -49,7 +50,7 @@ const Header: React.FC = () => {
               >
                 {item.shortTitle}
               </Link>
-              {activeDropdown === item.id && (
+              {!isMobile && activeDropdown === item.id && (
                 <HeaderDropdown
                   section={SECTIONS.find((s) => s.id === item.id)!}
                   isOpen={true}

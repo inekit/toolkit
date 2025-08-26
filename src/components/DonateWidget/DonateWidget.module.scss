@@ -48,7 +48,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  width: 320px;
+  width: fit-content;
   background: white;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
@@ -87,80 +87,27 @@
 }
 
 .amounts {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.amountButton {
-  padding: 0.75rem;
-  background: var(--gray-50);
-  border: 2px solid var(--gray-200);
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  color: var(--gray-700);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    background: var(--primary-50);
-    border-color: var(--primary-300);
-    color: var(--primary-700);
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-}
-
-.customAmount {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.amountInput {
-  flex: 1;
-  padding: 0.75rem;
-  border: 2px solid var(--gray-200);
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
-  max-width: 164px;
-
-  &:focus {
-    outline: none;
-    border-color: var(--primary-400);
-    box-shadow: 0 0 0 3px var(--primary-100);
-  }
-
-  &::placeholder {
-    color: var(--gray-400);
-  }
+  gap: 0.75rem;
+  flex-direction: column;
 }
 
 .customButton {
-  padding: 0.75rem 1rem;
   background: var(--primary-500);
   color: white;
   border: none;
-  border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  width: 100%;
+  height: 36px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  padding-right: 15px;
 
   &:hover {
     background: var(--primary-600);
-  }
-}
-
-.paymentMethods {
-  text-align: center;
-
-  p {
-    color: var(--gray-600);
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
   }
 }
 

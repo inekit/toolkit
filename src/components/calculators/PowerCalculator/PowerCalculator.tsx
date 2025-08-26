@@ -554,91 +554,95 @@ const PowerCalculator: React.FC = () => {
         <div className="result">
           <h3>Результат расчета</h3>
 
-          <div className="powerSummary">
-            <div className="summaryItem">
-              <span className="label">Общий вес:</span>
-              <span className="value">{result.totalWeight} кг</span>
+          <div className={styles.powerSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Общий вес:</span>
+              <span className={styles.value}>{result.totalWeight} кг</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Скорость:</span>
-              <span className="value">{result.speed} км/ч</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Скорость:</span>
+              <span className={styles.value}>{result.speed} км/ч</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Уклон:</span>
-              <span className="value">{result.grade}%</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Уклон:</span>
+              <span className={styles.value}>{result.grade}%</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Поверхность:</span>
-              <span className="value">{getSurfaceName(result.surface)}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Поверхность:</span>
+              <span className={styles.value}>
+                {getSurfaceName(result.surface)}
+              </span>
             </div>
           </div>
 
-          <div className="resultValue">
-            <span className="amount">{result.power}</span>
-            <span className="unit">ватт</span>
+          <div className={styles.resultValue}>
+            <span className={styles.amount}>{result.power}</span>
+            <span className={styles.unit}>ватт</span>
           </div>
 
-          <div className="powerBreakdown">
+          <div className={styles.powerBreakdown}>
             <h4>Разбивка мощности:</h4>
-            <div className="breakdownGrid">
-              <div className="breakdownItem">
-                <span className="label">Гравитация (подъем):</span>
-                <span className="value">
+            <div className={styles.breakdownGrid}>
+              <div className={styles.breakdownItem}>
+                <span className={styles.label}>Гравитация (подъем):</span>
+                <span className={styles.value}>
                   {result.powerBreakdown.gravity} Вт
                 </span>
               </div>
-              <div className="breakdownItem">
-                <span className="label">Аэродинамика (ветер):</span>
-                <span className="value">
+              <div className={styles.breakdownItem}>
+                <span className={styles.label}>Аэродинамика (ветер):</span>
+                <span className={styles.value}>
                   {result.powerBreakdown.aerodynamic} Вт
                 </span>
               </div>
-              <div className="breakdownItem">
-                <span className="label">Качение (поверхность):</span>
-                <span className="value">
+              <div className={styles.breakdownItem}>
+                <span className={styles.label}>Качение (поверхность):</span>
+                <span className={styles.value}>
                   {result.powerBreakdown.rolling} Вт
                 </span>
               </div>
-              <div className="breakdownItem">
-                <span className="label">Кинетика (ускорение):</span>
-                <span className="value">
+              <div className={styles.breakdownItem}>
+                <span className={styles.label}>Кинетика (ускорение):</span>
+                <span className={styles.value}>
                   {result.powerBreakdown.kinetic} Вт
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="performanceAnalysis">
+          <div className={styles.performanceAnalysis}>
             <h4>Анализ производительности:</h4>
-            <div className="performanceGrid">
-              <div className="performanceItem">
-                <span className="label">Удельная мощность:</span>
-                <span className="value">
+            <div className={styles.performanceGrid}>
+              <div className={styles.performanceItem}>
+                <span className={styles.label}>Удельная мощность:</span>
+                <span className={styles.value}>
                   {result.performance.powerToWeight} Вт/кг
                 </span>
               </div>
-              <div className="performanceItem">
-                <span className="label">Класс велосипедиста:</span>
-                <span className="value">{result.performance.powerClass}</span>
+              <div className={styles.performanceItem}>
+                <span className={styles.label}>Класс велосипедиста:</span>
+                <span className={styles.value}>
+                  {result.performance.powerClass}
+                </span>
               </div>
-              <div className="performanceItem">
-                <span className="label">Сложность маршрута:</span>
-                <span className="value">
+              <div className={styles.performanceItem}>
+                <span className={styles.label}>Сложность маршрута:</span>
+                <span className={styles.value}>
                   {result.performance.routeDifficulty}
                 </span>
               </div>
-              <div className="performanceItem">
-                <span className="label">Рекомендуемый каденс:</span>
-                <span className="value">
+              <div className={styles.performanceItem}>
+                <span className={styles.label}>Рекомендуемый каденс:</span>
+                <span className={styles.value}>
                   {result.performance.recommendedCadence}
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендации:</strong>
-            <ul className="recommendationsList">
+            <ul className={styles.recommendationsList}>
               {result.recommendations.map((rec: string, index: number) => (
                 <li key={index}>{rec}</li>
               ))}

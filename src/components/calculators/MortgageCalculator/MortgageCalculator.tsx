@@ -367,83 +367,83 @@ const MortgageCalculator: React.FC = () => {
         <div className="result">
           <h3>Результат расчета</h3>
 
-          <div className="mortgageSummary">
-            <div className="summaryItem">
-              <span className="label">Стоимость недвижимости:</span>
-              <span className="value">{result.propertyPrice} ₽</span>
+          <div className={styles.mortgageSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Стоимость недвижимости:</span>
+              <span className={styles.value}>{result.propertyPrice} ₽</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Первоначальный взнос:</span>
-              <span className="value">{result.downPayment} ₽</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Первоначальный взнос:</span>
+              <span className={styles.value}>{result.downPayment} ₽</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Сумма кредита:</span>
-              <span className="value">{result.loanAmount} ₽</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Сумма кредита:</span>
+              <span className={styles.value}>{result.loanAmount} ₽</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Срок кредита:</span>
-              <span className="value">{result.loanTerm} лет</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Срок кредита:</span>
+              <span className={styles.value}>{result.loanTerm} лет</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Процентная ставка:</span>
-              <span className="value">{result.interestRate}%</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Процентная ставка:</span>
+              <span className={styles.value}>{result.interestRate}%</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Тип платежа:</span>
-              <span className="value">{result.paymentType}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Тип платежа:</span>
+              <span className={styles.value}>{result.paymentType}</span>
             </div>
           </div>
 
-          <div className="resultValue">
-            <span className="amount">{result.monthlyPayment}</span>
-            <span className="unit">₽ в месяц</span>
+          <div className={styles.resultValue}>
+            <span className={styles.amount}>{result.monthlyPayment}</span>
+            <span className={styles.unit}>₽ в месяц</span>
           </div>
 
-          <div className="paymentDetails">
+          <div className={styles.paymentDetails}>
             <h4>Детали кредита:</h4>
-            <div className="detailsGrid">
-              <div className="detailItem">
-                <span className="label">Ежемесячный платеж:</span>
-                <span className="value">{result.monthlyPayment} ₽</span>
+            <div className={styles.detailsGrid}>
+              <div className={styles.detailItem}>
+                <span className={styles.label}>Ежемесячный платеж:</span>
+                <span className={styles.value}>{result.monthlyPayment} ₽</span>
               </div>
-              <div className="detailItem">
-                <span className="label">Общая сумма к возврату:</span>
-                <span className="value">{result.totalPayment} ₽</span>
+              <div className={styles.detailItem}>
+                <span className={styles.label}>Общая сумма к возврату:</span>
+                <span className={styles.value}>{result.totalPayment} ₽</span>
               </div>
-              <div className="detailItem">
-                <span className="label">Общая переплата:</span>
-                <span className="value">{result.totalInterest} ₽</span>
+              <div className={styles.detailItem}>
+                <span className={styles.label}>Общая переплата:</span>
+                <span className={styles.value}>{result.totalInterest} ₽</span>
               </div>
             </div>
           </div>
 
-          <div className="affordabilityAnalysis">
+          <div className={styles.affordabilityAnalysis}>
             <h4>Анализ платежеспособности:</h4>
-            <div className="affordabilityGrid">
-              <div className="affordabilityItem">
-                <span className="label">Рекомендуемый доход:</span>
-                <span className="value">
+            <div className={styles.affordabilityGrid}>
+              <div className={styles.affordabilityItem}>
+                <span className={styles.label}>Рекомендуемый доход:</span>
+                <span className={styles.value}>
                   {result.affordability.recommendedIncome} ₽/год
                 </span>
               </div>
-              <div className="affordabilityItem">
-                <span className="label">Платеж к доходу:</span>
-                <span className="value">
+              <div className={styles.affordabilityItem}>
+                <span className={styles.label}>Платеж к доходу:</span>
+                <span className={styles.value}>
                   {result.affordability.paymentToIncomeRatio}%
                 </span>
               </div>
-              <div className="affordabilityItem">
-                <span className="label">Оценка доступности:</span>
-                <span className="value">
+              <div className={styles.affordabilityItem}>
+                <span className={styles.label}>Оценка доступности:</span>
+                <span className={styles.value}>
                   {result.affordability.affordability}
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="paymentSchedule">
+          <div className={styles.paymentSchedule}>
             <h4>График платежей (первые 12 месяцев):</h4>
-            <div className="scheduleTable">
+            <div className={styles.scheduleTable}>
               <table>
                 <thead>
                   <tr>
@@ -469,9 +469,9 @@ const MortgageCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендации:</strong>
-            <ul className="recommendationsList">
+            <ul className={styles.recommendationsList}>
               {result.recommendations.map((rec: string, index: number) => (
                 <li key={index}>{rec}</li>
               ))}

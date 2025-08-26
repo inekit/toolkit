@@ -578,24 +578,24 @@ const FoundationCalculator: React.FC = () => {
         <div className="result">
           <h3>Результат расчета</h3>
 
-          <div className="foundationSummary">
-            <div className="summaryItem">
-              <span className="label">Нагрузка от здания:</span>
-              <span className="value">{result.buildingLoad} кг</span>
+          <div className={styles.foundationSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Нагрузка от здания:</span>
+              <span className={styles.value}>{result.buildingLoad} кг</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Несущая способность грунта:</span>
-              <span className="value">{result.soilBearing} кг/м²</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Несущая способность грунта:</span>
+              <span className={styles.value}>{result.soilBearing} кг/м²</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Глубина заложения:</span>
-              <span className="value">{result.foundationDepth} м</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Глубина заложения:</span>
+              <span className={styles.value}>{result.foundationDepth} м</span>
             </div>
           </div>
 
-          <div className="foundationDimensions">
+          <div className={styles.foundationDimensions}>
             <h4>Размеры фундамента:</h4>
-            <div className="dimensionsInfo">
+            <div className={styles.dimensionsInfo}>
               <p>
                 <strong>Тип:</strong> {result.foundationDimensions.type}
               </p>
@@ -631,54 +631,60 @@ const FoundationCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="materialsCalculation">
+          <div className={styles.materialsCalculation}>
             <h4>Расход материалов:</h4>
-            <div className="materialsGrid">
+            <div className={styles.materialsGrid}>
               {result.materials.concrete && (
-                <div className="materialItem">
-                  <span className="label">Бетон:</span>
-                  <span className="value">{result.materials.concrete} м³</span>
+                <div className={styles.materialItem}>
+                  <span className={styles.label}>Бетон:</span>
+                  <span className={styles.value}>
+                    {result.materials.concrete} м³
+                  </span>
                 </div>
               )}
               {result.materials.reinforcement && (
-                <div className="materialItem">
-                  <span className="label">Арматура:</span>
-                  <span className="value">
+                <div className={styles.materialItem}>
+                  <span className={styles.label}>Арматура:</span>
+                  <span className={styles.value}>
                     {result.materials.reinforcement} т
                   </span>
                 </div>
               )}
               {result.materials.formwork && (
-                <div className="materialItem">
-                  <span className="label">Опалубка:</span>
-                  <span className="value">{result.materials.formwork} м²</span>
+                <div className={styles.materialItem}>
+                  <span className={styles.label}>Опалубка:</span>
+                  <span className={styles.value}>
+                    {result.materials.formwork} м²
+                  </span>
                 </div>
               )}
               {result.materials.insulation && (
-                <div className="materialItem">
-                  <span className="label">Утеплитель:</span>
-                  <span className="value">
+                <div className={styles.materialItem}>
+                  <span className={styles.label}>Утеплитель:</span>
+                  <span className={styles.value}>
                     {result.materials.insulation} м²
                   </span>
                 </div>
               )}
               {result.materials.piles && (
-                <div className="materialItem">
-                  <span className="label">Сваи:</span>
-                  <span className="value">{result.materials.piles} шт.</span>
+                <div className={styles.materialItem}>
+                  <span className={styles.label}>Сваи:</span>
+                  <span className={styles.value}>
+                    {result.materials.piles} шт.
+                  </span>
                 </div>
               )}
             </div>
           </div>
 
-          <div className="resultValue">
-            <span className="amount">{result.cost}</span>
-            <span className="unit">рублей</span>
+          <div className={styles.resultValue}>
+            <span className={styles.amount}>{result.cost}</span>
+            <span className={styles.unit}>рублей</span>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендации:</strong>
-            <ul className="recommendationsList">
+            <ul className={styles.recommendationsList}>
               {result.recommendations.map((rec: string, index: number) => (
                 <li key={index}>{rec}</li>
               ))}

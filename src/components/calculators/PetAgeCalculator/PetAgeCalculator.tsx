@@ -279,7 +279,7 @@ const PetAgeCalculator: React.FC = () => {
             <span className="unit">человеческих лет</span>
           </div>
 
-          <div className="petInfo">
+          <div className={styles.petInfo}>
             <h4>
               {getPetInfo().icon} {getPetInfo().name}
             </h4>

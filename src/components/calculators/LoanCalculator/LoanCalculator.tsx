@@ -138,7 +138,7 @@ const LoanCalculator: React.FC = () => {
         }
 
         newTotalPayment =
-          principalPayment * earlyRepaymentMonth +
+          monthlyPayment * earlyRepaymentMonth +
           early +
           newPrincipalPayment * remainingPayments +
           newInterestSum;
@@ -406,99 +406,109 @@ const LoanCalculator: React.FC = () => {
         <div className="result">
           <h3>Результат расчета</h3>
 
-          <div className="loanSummary">
-            <div className="summaryItem">
-              <span className="label">Сумма кредита:</span>
-              <span className="value">{result.loanAmount} ₽</span>
+          <div className={styles.loanSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Сумма кредита:</span>
+              <span className={styles.value}>{result.loanAmount} ₽</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Срок кредита:</span>
-              <span className="value">{result.loanTerm} месяцев</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Срок кредита:</span>
+              <span className={styles.value}>{result.loanTerm} месяцев</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Процентная ставка:</span>
-              <span className="value">{result.interestRate}%</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Процентная ставка:</span>
+              <span className={styles.value}>{result.interestRate}%</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Тип платежа:</span>
-              <span className="value">{result.paymentType}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Тип платежа:</span>
+              <span className={styles.value}>{result.paymentType}</span>
             </div>
           </div>
 
-          <div className="resultValue">
-            <span className="amount">{result.monthlyPayment}</span>
-            <span className="unit">₽ в месяц</span>
+          <div className={styles.resultValue}>
+            <span className={styles.amount}>{result.monthlyPayment}</span>
+            <span className={styles.unit}>₽ в месяц</span>
           </div>
 
-          <div className="loanDetails">
+          <div className={styles.loanDetails}>
             <h4>Детали кредита:</h4>
-            <div className="detailsGrid">
-              <div className="detailItem">
-                <span className="label">Ежемесячный платеж:</span>
-                <span className="value">{result.monthlyPayment} ₽</span>
+            <div className={styles.detailsGrid}>
+              <div className={styles.detailItem}>
+                <span className={styles.label}>Ежемесячный платеж:</span>
+                <span className={styles.value}>{result.monthlyPayment} ₽</span>
               </div>
-              <div className="detailItem">
-                <span className="label">Общая сумма к возврату:</span>
-                <span className="value">{result.totalPayment} ₽</span>
+              <div className={styles.detailItem}>
+                <span className={styles.label}>Общая сумма к возврату:</span>
+                <span className={styles.value}>{result.totalPayment} ₽</span>
               </div>
-              <div className="detailItem">
-                <span className="label">Общая переплата:</span>
-                <span className="value">{result.totalInterest} ₽</span>
+              <div className={styles.detailItem}>
+                <span className={styles.label}>Общая переплата:</span>
+                <span className={styles.value}>{result.totalInterest} ₽</span>
               </div>
             </div>
           </div>
 
           {result.earlyRepayment > 0 && (
-            <div className="earlyRepaymentAnalysis">
+            <div className={styles.earlyRepaymentAnalysis}>
               <h4>Анализ досрочного погашения:</h4>
-              <div className="earlyRepaymentGrid">
-                <div className="earlyRepaymentItem">
-                  <span className="label">Сумма досрочного погашения:</span>
-                  <span className="value">{result.earlyRepayment} ₽</span>
+              <div className={styles.earlyRepaymentGrid}>
+                <div className={styles.earlyRepaymentItem}>
+                  <span className={styles.label}>
+                    Сумма досрочного погашения:
+                  </span>
+                  <span className={styles.value}>
+                    {result.earlyRepayment} ₽
+                  </span>
                 </div>
-                <div className="earlyRepaymentItem">
-                  <span className="label">Экономия на процентах:</span>
-                  <span className="value">
+                <div className={styles.earlyRepaymentItem}>
+                  <span className={styles.label}>Экономия на процентах:</span>
+                  <span className={styles.value}>
                     {result.earlyRepaymentSavings} ₽
                   </span>
                 </div>
-                <div className="earlyRepaymentItem">
-                  <span className="label">Новая общая сумма:</span>
-                  <span className="value">{result.newTotalPayment} ₽</span>
+                <div className={styles.earlyRepaymentItem}>
+                  <span className={styles.label}>Новая общая сумма:</span>
+                  <span className={styles.value}>
+                    {result.newTotalPayment} ₽
+                  </span>
                 </div>
-                <div className="earlyRepaymentItem">
-                  <span className="label">Новая переплата:</span>
-                  <span className="value">{result.newTotalInterest} ₽</span>
+                <div className={styles.earlyRepaymentItem}>
+                  <span className={styles.label}>Новая переплата:</span>
+                  <span className={styles.value}>
+                    {result.newTotalInterest} ₽
+                  </span>
                 </div>
               </div>
             </div>
           )}
 
-          <div className="creditLoadAnalysis">
+          <div className={styles.creditLoadAnalysis}>
             <h4>Анализ кредитной нагрузки:</h4>
-            <div className="creditLoadGrid">
-              <div className="creditLoadItem">
-                <span className="label">Рекомендуемый доход:</span>
-                <span className="value">
+            <div className={styles.creditLoadGrid}>
+              <div className={styles.creditLoadItem}>
+                <span className={styles.label}>Рекомендуемый доход:</span>
+                <span className={styles.value}>
                   {result.creditLoad.recommendedIncome} ₽/год
                 </span>
               </div>
-              <div className="creditLoadItem">
-                <span className="label">Платеж к доходу:</span>
-                <span className="value">
+              <div className={styles.creditLoadItem}>
+                <span className={styles.label}>Платеж к доходу:</span>
+                <span className={styles.value}>
                   {result.creditLoad.paymentToIncomeRatio}%
                 </span>
               </div>
-              <div className="creditLoadItem">
-                <span className="label">Уровень нагрузки:</span>
-                <span className="value">{result.creditLoad.loadLevel}</span>
+              <div className={styles.creditLoadItem}>
+                <span className={styles.label}>Уровень нагрузки:</span>
+                <span className={styles.value}>
+                  {result.creditLoad.loadLevel}
+                </span>
               </div>
             </div>
           </div>
 
-          <div className="paymentSchedule">
+          <div className={styles.paymentSchedule}>
             <h4>График платежей:</h4>
-            <div className="scheduleTable">
+            <div className={styles.scheduleTable}>
               <table>
                 <thead>
                   <tr>
@@ -534,9 +544,9 @@ const LoanCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендации:</strong>
-            <ul className="recommendationsList">
+            <ul className={styles.recommendationsList}>
               {result.recommendations.map((rec: string, index: number) => (
                 <li key={index}>{rec}</li>
               ))}

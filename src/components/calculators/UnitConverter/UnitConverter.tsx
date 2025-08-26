@@ -536,7 +536,7 @@ const UnitConverter: React.FC = () => {
           />
         </div>
 
-        {error && <div className="error">{error}</div>}
+        {error && <div className={styles.error}>{error}</div>}
 
         <div className="inputGroup">
           <button type="submit" className="calculateBtn">

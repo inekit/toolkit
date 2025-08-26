@@ -33,35 +33,51 @@ const DonateWidget: React.FC = () => {
             <h4>Поддержать проект</h4>
             <p>Выберите сумму для поддержки</p>
           </div>
-
           <div className={styles.amounts}>
-            {donateOptions.map((option) => (
-              <button
-                key={option.amount}
-                className={styles.amountButton}
-                onClick={() => handleDonate(option.amount)}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-
-          <div className={styles.customAmount}>
-            <input
-              type="number"
-              placeholder="Другая сумма"
-              className={styles.amountInput}
+            <iframe
+              src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=1CCRR2I4FUB.250826&"
+              width="258"
+              height="36"
+              frameBorder={0}
+              allowTransparency={true}
+              scrolling="no"
+              style={{ border: 'none' }}
             />
-            <button className={styles.customButton}>Отправить</button>
-          </div>
-
-          <div className={styles.paymentMethods}>
-            <p>Способы оплаты:</p>
-            <div className={styles.methods}>
-              <span>💳</span>
-              <span>💎</span>
-              <span>📱</span>
-            </div>
+            <iframe
+              src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=1CCS04G7FE9.250826&"
+              width="258"
+              height="36"
+              frameBorder={0}
+              allowTransparency={true}
+              scrolling="no"
+              style={{ border: 'none' }}
+            />
+            <iframe
+              src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=1CCS6VN4J6E.250826&"
+              width="258"
+              height="36"
+              frameBorder={0}
+              allowTransparency={true}
+              scrolling="no"
+              style={{ border: 'none' }}
+            />
+            <iframe
+              src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=1CCS7DFORL8.250826&"
+              width="258"
+              height="36"
+              frameBorder={0}
+              allowTransparency={true}
+              scrolling="no"
+              style={{ border: 'none' }}
+            />
+            <button
+              className={styles.customButton}
+              onClick={() =>
+                window.open('https://yoomoney.ru/to/4100119300590293', '_blank')
+              }
+            >
+              Своя сумма
+            </button>
           </div>
         </div>
       )}

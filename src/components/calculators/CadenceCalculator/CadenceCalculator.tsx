@@ -735,135 +735,145 @@ const CadenceCalculator: React.FC = () => {
         <div className="result">
           <h3>Результат расчета</h3>
 
-          <div className="cadenceSummary">
-            <div className="summaryItem">
-              <span className="label">Расстояние:</span>
-              <span className="value">{result.distance} км</span>
+          <div className={styles.cadenceSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Расстояние:</span>
+              <span className={styles.value}>{result.distance} км</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Тип велосипедиста:</span>
-              <span className="value">
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Тип велосипедиста:</span>
+              <span className={styles.value}>
                 {getRiderTypeName(result.riderType)}
               </span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Местность:</span>
-              <span className="value">{getTerrainName(result.terrain)}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Местность:</span>
+              <span className={styles.value}>
+                {getTerrainName(result.terrain)}
+              </span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Цель:</span>
-              <span className="value">{getGoalName(result.goal)}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Цель:</span>
+              <span className={styles.value}>{getGoalName(result.goal)}</span>
             </div>
           </div>
 
-          <div className="cadenceResult">
+          <div className={styles.cadenceResult}>
             <h4>Оптимальный каденс:</h4>
-            <div className="cadenceRange">
-              <div className="rangeItem">
-                <span className="label">Низкий:</span>
-                <span className="value">{result.cadence.range.low} об/мин</span>
+            <div className={styles.cadenceRange}>
+              <div className={styles.rangeItem}>
+                <span className={styles.label}>Низкий:</span>
+                <span className={styles.value}>
+                  {result.cadence.range.low} об/мин
+                </span>
               </div>
-              <div className="rangeItem optimal">
-                <span className="label">Оптимальный:</span>
-                <span className="value">
+              <div className={styles.rangeItem}>
+                <span className={styles.label}>Оптимальный:</span>
+                <span className={styles.value}>
                   {result.cadence.range.optimal} об/мин
                 </span>
               </div>
-              <div className="rangeItem">
-                <span className="label">Высокий:</span>
-                <span className="value">
+              <div className={styles.rangeItem}>
+                <span className={styles.label}>Высокий:</span>
+                <span className={styles.value}>
                   {result.cadence.range.high} об/мин
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="cadenceByTerrain">
+          <div className={styles.cadenceByTerrain}>
             <h4>Каденс по местности:</h4>
-            <div className="terrainGrid">
-              <div className="terrainItem">
-                <span className="label">Ровная местность:</span>
-                <span className="value">
+            <div className={styles.terrainGrid}>
+              <div className={styles.terrainItem}>
+                <span className={styles.label}>Ровная местность:</span>
+                <span className={styles.value}>
                   {result.cadence.byTerrain.flat} об/мин
                 </span>
               </div>
-              <div className="terrainItem">
-                <span className="label">Холмистая местность:</span>
-                <span className="value">
+              <div className={styles.terrainItem}>
+                <span className={styles.label}>Холмистая местность:</span>
+                <span className={styles.value}>
                   {result.cadence.byTerrain.rolling} об/мин
                 </span>
               </div>
-              <div className="terrainItem">
-                <span className="label">Горная местность:</span>
-                <span className="value">
+              <div className={styles.terrainItem}>
+                <span className={styles.label}>Горная местность:</span>
+                <span className={styles.value}>
                   {result.cadence.byTerrain.hilly} об/мин
                 </span>
               </div>
-              <div className="terrainItem">
-                <span className="label">Сложная горная:</span>
-                <span className="value">
+              <div className={styles.terrainItem}>
+                <span className={styles.label}>Сложная горная:</span>
+                <span className={styles.value}>
                   {result.cadence.byTerrain.mountainous} об/мин
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="gearRecommendations">
+          <div className={styles.gearRecommendations}>
             <h4>Рекомендуемые передачи:</h4>
-            <div className="gearGrid">
-              <div className="gearItem">
-                <span className="label">Низкая передача:</span>
-                <span className="value">
+            <div className={styles.gearGrid}>
+              <div className={styles.gearItem}>
+                <span className={styles.label}>Низкая передача:</span>
+                <span className={styles.value}>
                   {result.gearRatios.recommended.low}
                 </span>
               </div>
-              <div className="gearItem">
-                <span className="label">Оптимальная передача:</span>
-                <span className="value">
+              <div className={styles.gearItem}>
+                <span className={styles.label}>Оптимальная передача:</span>
+                <span className={styles.value}>
                   {result.gearRatios.recommended.optimal}
                 </span>
               </div>
-              <div className="gearItem">
-                <span className="label">Высокая передача:</span>
-                <span className="value">
+              <div className={styles.gearItem}>
+                <span className={styles.label}>Высокая передача:</span>
+                <span className={styles.value}>
                   {result.gearRatios.recommended.high}
                 </span>
               </div>
             </div>
-            <p className="gearExplanation">{result.gearRatios.explanation}</p>
+            <p className={styles.gearExplanation}>
+              {result.gearRatios.explanation}
+            </p>
           </div>
 
-          <div className="trainingPlan">
+          <div className={styles.trainingPlan}>
             <h4>План тренировок:</h4>
-            <div className="trainingGrid">
-              <div className="trainingSection">
+            <div className={styles.trainingGrid}>
+              <div className={styles.trainingSection}>
                 <h5>Еженедельные тренировки:</h5>
-                <div className="trainingItem">
-                  <span className="label">Легкая:</span>
-                  <span className="value">
+                <div className={styles.trainingItem}>
+                  <span className={styles.label}>Легкая:</span>
+                  <span className={styles.value}>
                     {result.training.weekly.easy} об/мин
                   </span>
                 </div>
-                <div className="trainingItem">
-                  <span className="label">Умеренная:</span>
-                  <span className="value">
+                <div className={styles.trainingItem}>
+                  <span className={styles.label}>Умеренная:</span>
+                  <span className={styles.value}>
                     {result.training.weekly.moderate} об/мин
                   </span>
                 </div>
-                <div className="trainingItem">
-                  <span className="label">Интенсивная:</span>
-                  <span className="value">
+                <div className={styles.trainingItem}>
+                  <span className={styles.label}>Интенсивная:</span>
+                  <span className={styles.value}>
                     {result.training.weekly.hard} об/мин
                   </span>
                 </div>
               </div>
-              <div className="trainingSection">
+              <div className={styles.trainingSection}>
                 <h5>Специфичные тренировки:</h5>
                 {Object.entries(result.training.specific).map(
                   ([key, value]) => (
-                    <div key={key} className="trainingItem">
-                      <span className="label">{getTrainingTypeName(key)}:</span>
-                      <span className="value">{value} об/мин</span>
+                    <div key={key} className={styles.trainingItem}>
+                      <span className={styles.label}>
+                        {getTrainingTypeName(key)}:
+                      </span>
+                      <span className={styles.value}>
+                        {value as number} об/мин
+                      </span>
                     </div>
                   )
                 )}
@@ -871,30 +881,30 @@ const CadenceCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="efficiencyAnalysis">
+          <div className={styles.efficiencyAnalysis}>
             <h4>Анализ эффективности:</h4>
-            <div className="efficiencyGrid">
-              <div className="efficiencyItem">
-                <span className="label">Эффективность каденса:</span>
-                <span className="value">
+            <div className={styles.efficiencyGrid}>
+              <div className={styles.efficiencyItem}>
+                <span className={styles.label}>Эффективность каденса:</span>
+                <span className={styles.value}>
                   {result.efficiency.cadenceEfficiency}
                 </span>
               </div>
-              <div className="efficiencyItem">
-                <span className="label">По местности:</span>
-                <span className="value">
+              <div className={styles.efficiencyItem}>
+                <span className={styles.label}>По местности:</span>
+                <span className={styles.value}>
                   {result.efficiency.terrainEfficiency}
                 </span>
               </div>
-              <div className="efficiencyItem">
-                <span className="label">По дистанции:</span>
-                <span className="value">
+              <div className={styles.efficiencyItem}>
+                <span className={styles.label}>По дистанции:</span>
+                <span className={styles.value}>
                   {result.efficiency.distanceEfficiency}
                 </span>
               </div>
-              <div className="efficiencyItem overall">
-                <span className="label">Общая оценка:</span>
-                <span className="value">
+              <div className={styles.efficiencyItem}>
+                <span className={styles.label}>Общая оценка:</span>
+                <span className={styles.value}>
                   {result.efficiency.overall} ({result.efficiency.totalScore}
                   /100)
                 </span>
@@ -902,9 +912,9 @@ const CadenceCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендации:</strong>
-            <ul className="recommendationsList">
+            <ul className={styles.recommendationsList}>
               {result.recommendations.map((rec: string, index: number) => (
                 <li key={index}>{rec}</li>
               ))}

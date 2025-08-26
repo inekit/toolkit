@@ -1,4 +1,377 @@
 // Специфичные стили для калькулятора спицевания
 .calculator {
-  // Используем общие стили из calculators.scss
+}
+
+.tutorialBtn {
+  background: var(--info-600);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: var(--info-700);
+  }
+}
+
+.tutorial {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+
+  h3 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+}
+
+.tutorialContent {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.tutorialSection {
+  h4 {
+    color: var(--gray-700);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.25rem 0;
+      color: var(--gray-600);
+      position: relative;
+      padding-left: 1.5rem;
+
+      &:before {
+        content: '•';
+        color: var(--primary-600);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+  width: 1rem !important;
+  height: 1rem;
+}
+
+.advancedSettings {
+  background: var(--primary-50);
+  border: 1px solid var(--primary-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1rem 0;
+
+  h4 {
+    color: var(--primary-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.resultSummary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  .label {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    font-weight: 500;
+  }
+
+  .value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+}
+
+.patternVisualization {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1.5rem 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.wheelSide {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+
+  h5 {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--gray-700);
+  }
+
+  &.left {
+    border-color: var(--primary-300);
+    background: var(--primary-50);
+  }
+
+  &.right {
+    border-color: var(--accent-300);
+    background: var(--accent-50);
+  }
+}
+
+.spokeNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.spokeNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+
+  &.left {
+    background: var(--primary-600);
+    border: 2px solid var(--primary-700);
+  }
+
+  &.right {
+    background: var(--accent-600);
+    border: 2px solid var(--accent-700);
+  }
+}
+
+.patternInfo {
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+
+  p {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--gray-700);
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.5rem;
+
+    li {
+      padding: 0.25rem 0;
+      color: var(--gray-600);
+    }
+  }
+}
+
+.spokeSpecs {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+
+  h4 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-100);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    font-weight: 500;
+    color: var(--gray-600);
+  }
+
+  .value {
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+}
+
+.warning {
+  background: var(--warning-50);
+  border: 1px solid var(--warning-200);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-top: 1rem;
+  color: var(--warning-800);
+  font-size: 0.9rem;
+}
+
+.recommendations {
+  background: var(--success-50);
+  border: 1px solid var(--success-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+
+  h4 {
+    color: var(--success-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.recommendationsList {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.recommendation {
+  strong {
+    color: var(--success-700);
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.5rem;
+
+    li {
+      padding: 0.25rem 0;
+      color: var(--success-700);
+    }
+  }
+}
+
+.tools {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+
+  h4 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.toolsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tool {
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+// Стили для уровней сложности
+.difficulty-новичок {
+  color: var(--success-600);
+}
+
+.difficulty-средний {
+  color: var(--warning-600);
+}
+
+.difficulty-продвинутый {
+  color: var(--info-600);
+}
+
+.difficulty-эксперт {
+  color: var(--danger-600);
+}
+
+// Стили для уровней натяжения
+.tension-низкое {
+  color: var(--success-600);
+}
+
+.tension-среднее {
+  color: var(--warning-600);
+}
+
+.tension-высокое {
+  color: var(--danger-600);
+}
+
+.tension-очень-высокое {
+  color: var(--danger-700);
+  font-weight: 700;
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .calculator {
+    padding: 1rem;
+  }
+
+  .specsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultSummary {
+    grid-template-columns: 1fr;
+  }
+
+  .patternVisualization {
+    grid-template-columns: 1fr;
+  }
 }

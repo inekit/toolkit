@@ -25,43 +25,6 @@
   }
 }
 
-.calculatorTabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  border-radius: var(--radius-lg);
-  background: var(--gray-100);
-  padding: 0.5rem;
-
-  @media (max-width: 640px) {
-    flex-direction: column;
-  }
-
-  .tab {
-    flex: 1;
-    padding: 1rem;
-    border: none;
-    border-radius: var(--radius-md);
-    background: transparent;
-    color: var(--gray-600);
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 0.9rem;
-
-    &:hover {
-      background: var(--gray-200);
-      color: var(--gray-700);
-    }
-
-    &.active {
-      background: var(--primary-500);
-      color: white;
-      box-shadow: var(--shadow-sm);
-    }
-  }
-}
-
 .bmiResult {
   .bmiSummary {
     margin: 1.5rem 0;
@@ -340,6 +303,7 @@
   .recommendationsList {
     margin: 1rem 0;
     padding-left: 1.5rem;
+    list-style: none;
 
     li {
       color: var(--success-700);

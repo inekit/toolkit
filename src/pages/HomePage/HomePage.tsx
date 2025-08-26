@@ -17,10 +17,12 @@ const HomePage: React.FC = () => {
     setTimeout(() => {
       const searchElement = document.getElementById('homepage-search');
       if (searchElement) {
-        searchElement.scrollIntoView({
+        const offset = 80;
+        const targetScrollPosition = searchElement.offsetTop - offset;
+
+        window.scrollTo({
+          top: targetScrollPosition,
           behavior: 'smooth',
-          block: 'start',
-          inline: 'nearest',
         });
       }
     }, 100);
@@ -57,7 +59,7 @@ const HomePage: React.FC = () => {
             </p>
             <div className={styles.heroActions}>
               <button onClick={handleStartUsing} className="btn btn-primary">
-                Начать использовать
+                Найти калькулятор
               </button>
               <button onClick={handleLearnMore} className="btn btn-secondary">
                 Узнать больше
@@ -289,7 +291,7 @@ const HomePage: React.FC = () => {
             <p>Найдите нужный калькулятор и решите свою задачу прямо сейчас</p>
             <div className={styles.ctaActions}>
               <button onClick={handleStartUsing} className="btn btn-primary">
-                Начать использовать
+                Найти калькулятор
               </button>
             </div>
           </div>

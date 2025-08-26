@@ -511,62 +511,70 @@ const GearCalculator: React.FC = () => {
         <div className="result">
           <h3>Результат расчета</h3>
 
-          <div className="gearSummary">
-            <div className="summaryItem">
-              <span className="label">Передние звезды:</span>
-              <span className="value">
+          <div className={styles.gearSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Передние звезды:</span>
+              <span className={styles.value}>
                 {result.frontTeeth.join(', ')} зубьев
               </span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Задние звезды:</span>
-              <span className="value">
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Задние звезды:</span>
+              <span className={styles.value}>
                 {result.rearTeeth.join(', ')} зубьев
               </span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Диаметр колеса:</span>
-              <span className="value">{result.wheelDiameter} мм</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Диаметр колеса:</span>
+              <span className={styles.value}>{result.wheelDiameter} мм</span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Всего передач:</span>
-              <span className="value">{result.gearAnalysis.totalGears}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Всего передач:</span>
+              <span className={styles.value}>
+                {result.gearAnalysis.totalGears}
+              </span>
             </div>
           </div>
 
-          <div className="gearAnalysis">
+          <div className={styles.gearAnalysis}>
             <h4>Анализ передач:</h4>
-            <div className="analysisGrid">
-              <div className="analysisItem">
-                <span className="label">Максимальная передача:</span>
-                <span className="value">{result.gearAnalysis.maxRatio}</span>
+            <div className={styles.analysisGrid}>
+              <div className={styles.analysisItem}>
+                <span className={styles.label}>Максимальная передача:</span>
+                <span className={styles.value}>
+                  {result.gearAnalysis.maxRatio}
+                </span>
               </div>
-              <div className="analysisItem">
-                <span className="label">Минимальная передача:</span>
-                <span className="value">{result.gearAnalysis.minRatio}</span>
+              <div className={styles.analysisItem}>
+                <span className={styles.label}>Минимальная передача:</span>
+                <span className={styles.value}>
+                  {result.gearAnalysis.minRatio}
+                </span>
               </div>
-              <div className="analysisItem">
-                <span className="label">Диапазон передач:</span>
-                <span className="value">{result.gearAnalysis.gearRange}</span>
+              <div className={styles.analysisItem}>
+                <span className={styles.label}>Диапазон передач:</span>
+                <span className={styles.value}>
+                  {result.gearAnalysis.gearRange}
+                </span>
               </div>
-              <div className="analysisItem">
-                <span className="label">Средний шаг:</span>
-                <span className="value">
+              <div className={styles.analysisItem}>
+                <span className={styles.label}>Средний шаг:</span>
+                <span className={styles.value}>
                   {result.gearAnalysis.steps.average}
                 </span>
               </div>
-              <div className="analysisItem">
-                <span className="label">Перекрытия:</span>
-                <span className="value">
+              <div className={styles.analysisItem}>
+                <span className={styles.label}>Перекрытия:</span>
+                <span className={styles.value}>
                   {result.gearAnalysis.overlaps.count}
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="gearTable">
+          <div className={styles.gearTable}>
             <h4>Таблица передач:</h4>
-            <div className="tableContainer">
+            <div className={styles.tableContainer}>
               <table>
                 <thead>
                   <tr>
@@ -594,16 +602,16 @@ const GearCalculator: React.FC = () => {
                 </tbody>
               </table>
               {result.speeds.length > 20 && (
-                <p className="tableNote">
+                <p className={styles.tableNote}>
                   Показаны первые 20 передач из {result.speeds.length}
                 </p>
               )}
             </div>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендации:</strong>
-            <ul className="recommendationsList">
+            <ul className={styles.recommendationsList}>
               {result.recommendations.map((rec: string, index: number) => (
                 <li key={index}>{rec}</li>
               ))}

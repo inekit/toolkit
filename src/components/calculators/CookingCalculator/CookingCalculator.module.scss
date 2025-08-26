@@ -1,6 +1,5 @@
 // Специфичные стили для кулинарного калькулятора
 .calculator {
-  // Используем общие стили из calculators.scss
 }
 
 .inputGrid {
@@ -28,384 +27,541 @@
 .calculatorTabs {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 2rem;
-  border-radius: var(--radius-lg);
-  background: var(--gray-100);
-  padding: 0.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
 
-  @media (max-width: 640px) {
-    flex-direction: column;
-  }
-
-  & > * {
-    flex: 1;
-    padding: 1rem;
-    border: none;
+  .tab {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--gray-300);
+    background: var(--white);
     border-radius: var(--radius-md);
-    background: transparent;
-    color: var(--gray-600);
-    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
     font-size: 0.9rem;
+    transition: all 0.2s;
 
     &:hover {
-      background: var(--gray-200);
-      color: var(--gray-700);
+      background: var(--gray-50);
+      border-color: var(--gray-400);
     }
 
     &.active {
-      background: var(--primary-500);
+      background: var(--primary-600);
       color: white;
+      border-color: var(--primary-600);
+    }
+  }
+}
+
+// Планирование питания
+.nutritionCalculator {
+  .productSearch {
+    margin-bottom: 2rem;
+  }
+
+  .searchControls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .searchInput {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px var(--primary-100);
+    }
+  }
+
+  .categorySelect {
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    min-width: 200px;
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-500);
+    }
+  }
+}
+
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.productCard {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  background: var(--white);
+  transition: all 0.2s;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+}
+
+.productInfo {
+  margin-bottom: 1rem;
+
+  h4 {
+    margin: 0 0 0.75rem 0;
+    color: var(--gray-800);
+    font-size: 1.1rem;
+  }
+
+  .productStats {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+
+    span {
+      background: var(--gray-100);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      color: var(--gray-700);
+    }
+  }
+
+  .productPrice {
+    font-weight: 600;
+    color: var(--success-600);
+    font-size: 1rem;
+  }
+}
+
+.mealButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+
+  button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+
+    &:nth-child(1) {
+      background: var(--warning-100);
+      color: var(--warning-700);
+    }
+    &:nth-child(2) {
+      background: var(--info-100);
+      color: var(--info-700);
+    }
+    &:nth-child(3) {
+      background: var(--primary-100);
+      color: var(--primary-700);
+    }
+    &:nth-child(4) {
+      background: var(--success-100);
+      color: var(--success-700);
+    }
+
+    &:hover {
+      transform: translateY(-1px);
       box-shadow: var(--shadow-sm);
     }
   }
 }
 
-.ingredientRow {
+.dailyPlan {
+  h3 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+.mealsGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr auto;
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mealSection {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+
+  h4 {
+    margin: 0 0 1rem 0;
+    color: var(--gray-700);
+    font-size: 1.1rem;
+  }
+}
+
+.mealProduct {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--gray-100);
 
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+  &:last-child {
+    border-bottom: none;
   }
 
-  .ingredientName {
-    grid-column: 1;
+  span {
+    color: var(--gray-700);
+    font-size: 0.9rem;
   }
 
-  .ingredientAmount {
-    grid-column: 2;
-  }
-
-  .ingredientUnit {
-    grid-column: 3;
-  }
-
-  .removeIngredient {
-    grid-column: 4;
-    width: 2rem;
-    height: 2rem;
+  button {
+    background: var(--danger-100);
+    color: var(--danger-600);
     border: none;
     border-radius: 50%;
-    background: var(--danger-500);
-    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
-    transition: background 0.2s ease;
 
     &:hover {
-      background: var(--danger-600);
+      background: var(--danger-200);
     }
   }
 }
 
-.addIngredient {
-  width: 100%;
-  padding: 0.75rem;
-  border: 2px dashed var(--primary-300);
-  border-radius: var(--radius-md);
+.dailyTotals {
   background: var(--primary-50);
-  color: var(--primary-600);
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    border-color: var(--primary-400);
-    background: var(--primary-100);
-    color: var(--primary-700);
-  }
-}
-
-.recipeResult {
-  .recipeSummary {
-    margin: 1.5rem 0;
-    padding: 1.5rem;
-    background: var(--primary-50);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--primary-200);
-
-    .summaryItem {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--primary-100);
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      .label {
-        color: var(--primary-700);
-        font-weight: 500;
-        font-size: 0.95rem;
-      }
-
-      .value {
-        color: var(--primary-800);
-        font-weight: 600;
-        font-size: 1rem;
-      }
-    }
-  }
-
-  .ingredientsTable {
-    margin: 1.5rem 0;
-    padding: 1.5rem;
-    background: var(--info-50);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--info-200);
-
-    h4 {
-      color: var(--info-800);
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--info-200);
-
-      th,
-      td {
-        padding: 0.75rem;
-        text-align: left;
-        border-bottom: 1px solid var(--info-100);
-      }
-
-      th {
-        background: var(--info-100);
-        color: var(--info-800);
-        font-weight: 600;
-        font-size: 0.9rem;
-      }
-
-      td {
-        color: var(--info-700);
-        font-size: 0.9rem;
-      }
-
-      tr:hover {
-        background: var(--info-50);
-      }
-    }
-  }
-}
-
-.caloriesResult {
-  .caloriesSummary {
-    margin: 1.5rem 0;
-    padding: 1.5rem;
-    background: var(--primary-50);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--primary-200);
-
-    .summaryItem {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--primary-100);
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      .label {
-        color: var(--primary-700);
-        font-weight: 500;
-        font-size: 0.95rem;
-      }
-
-      .value {
-        color: var(--primary-800);
-        font-weight: 600;
-        font-size: 1rem;
-      }
-    }
-  }
-
-  .resultValue {
-    text-align: center;
-    margin: 2rem 0;
-    padding: 2rem;
-    background: var(--accent-50);
-    border-radius: var(--radius-lg);
-    border: 2px solid var(--accent-200);
-
-    .amount {
-      display: block;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent-800);
-      margin-bottom: 0.5rem;
-    }
-
-    .unit {
-      font-size: 1.1rem;
-      color: var(--accent-600);
-      font-weight: 500;
-    }
-  }
-
-  .macrosAnalysis {
-    margin: 1.5rem 0;
-    padding: 1.5rem;
-    background: var(--success-50);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--success-200);
-
-    h4 {
-      color: var(--success-800);
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .macrosGrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-
-      @media (max-width: 640px) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .macroItem {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      background: white;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--success-200);
-
-      &.protein {
-        border-left: 4px solid var(--info-500);
-      }
-
-      &.fat {
-        border-left: 4px solid var(--warning-500);
-      }
-
-      &.carbs {
-        border-left: 4px solid var(--success-500);
-      }
-
-      .label {
-        color: var(--success-700);
-        font-weight: 500;
-        font-size: 0.9rem;
-      }
-
-      .value {
-        color: var(--success-800);
-        font-weight: 600;
-        font-size: 1rem;
-      }
-    }
-  }
-}
-
-.portionsResult {
-  .portionsSummary {
-    margin: 1.5rem 0;
-    padding: 1.5rem;
-    background: var(--primary-50);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--primary-200);
-
-    .summaryItem {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--primary-100);
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      .label {
-        color: var(--primary-700);
-        font-weight: 500;
-        font-size: 0.95rem;
-      }
-
-      .value {
-        color: var(--primary-800);
-        font-weight: 600;
-        font-size: 1rem;
-      }
-    }
-  }
-
-  .resultValue {
-    text-align: center;
-    margin: 2rem 0;
-    padding: 2rem;
-    background: var(--accent-50);
-    border-radius: var(--radius-lg);
-    border: 2px solid var(--accent-200);
-
-    .amount {
-      display: block;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent-800);
-      margin-bottom: 0.5rem;
-    }
-
-    .unit {
-      font-size: 1.1rem;
-      color: var(--accent-600);
-      font-weight: 500;
-    }
-  }
-}
-
-.recommendation {
-  margin: 1.5rem 0;
-  padding: 1.5rem;
-  background: var(--success-50);
+  border: 1px solid var(--primary-200);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--success-200);
+  padding: 1.5rem;
 
-  strong {
-    color: var(--success-800);
-    font-size: 1rem;
+  h4 {
+    margin: 0 0 1rem 0;
+    color: var(--primary-800);
+    font-size: 1.1rem;
+  }
+}
+
+.totalsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.totalItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .label {
+    color: var(--primary-700);
+    font-weight: 500;
   }
 
-  .recommendationsList {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
+  .value {
+    color: var(--primary-800);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+}
 
-    li {
-      color: var(--success-700);
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-      line-height: 1.4;
+// Конвертер единиц
+.converterCalculator {
+  h3 {
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
 
-      &:last-child {
-        margin-bottom: 0;
-      }
+  p {
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+  }
+}
+
+.converterForm {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.inputGroup {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--gray-700);
+    font-weight: 500;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px var(--primary-100);
     }
+  }
+}
+
+.conversionResult {
+  text-align: center;
+
+  h4 {
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+  }
+}
+
+.resultValue {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+
+  .amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-600);
+  }
+
+  .unit {
+    font-size: 1.2rem;
+    color: var(--gray-600);
+  }
+}
+
+.conversionTable {
+  h4 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+
+    th,
+    td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    th {
+      background: var(--gray-50);
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    td {
+      color: var(--gray-600);
+    }
+
+    tr:hover {
+      background: var(--gray-50);
+    }
+  }
+}
+
+// Калькулятор готовки
+.cookingCalculator {
+  h3 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+.cookingForm {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.cookingResults {
+  margin-top: 2rem;
+
+  h4 {
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.resultItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+
+  .label {
+    color: var(--gray-600);
+    font-weight: 500;
+  }
+
+  .value {
+    color: var(--gray-800);
+    font-weight: 600;
+  }
+}
+
+// Список покупок
+.shoppingCalculator {
+  h3 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+.shoppingList {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+
+  h4 {
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.shoppingItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-100);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  input[type='checkbox'] {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--success-500);
+  }
+
+  label {
+    color: var(--gray-700);
+    cursor: pointer;
+    flex: 1;
+
+    &:hover {
+      color: var(--gray-800);
+    }
+  }
+}
+
+.shoppingSummary {
+  background: var(--success-50);
+  border: 1px solid var(--success-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+
+  h4 {
+    color: var(--success-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.totalCost {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+
+  .amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--success-600);
+  }
+
+  .unit {
+    font-size: 1.2rem;
+    color: var(--success-700);
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .calculator {
+    padding: 1rem;
+  }
+
+  .calculatorTabs {
+    flex-direction: column;
+
+    .tab {
+      text-align: center;
+    }
+  }
+
+  .mealsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .totalsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productsList {
+    grid-template-columns: 1fr;
+  }
+
+  .resultsGrid {
+    grid-template-columns: 1fr;
   }
 }

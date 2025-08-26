@@ -23,7 +23,7 @@ const CurrencyConverter: React.FC = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Популярные валюты с флагами
+  // Полный список валют с флагами и символами
   const currencies: Currency[] = [
     { code: 'USD', name: 'Доллар США', symbol: '$', flag: '🇺🇸' },
     { code: 'EUR', name: 'Евро', symbol: '€', flag: '🇪🇺' },
@@ -45,6 +45,178 @@ const CurrencyConverter: React.FC = () => {
     { code: 'SEK', name: 'Шведская крона', symbol: 'kr', flag: '🇸🇪' },
     { code: 'NOK', name: 'Норвежская крона', symbol: 'kr', flag: '🇳🇴' },
     { code: 'DKK', name: 'Датская крона', symbol: 'kr', flag: '🇩🇰' },
+    { code: 'AED', name: 'Дирхам ОАЭ', symbol: 'د.إ', flag: '🇦🇪' },
+    { code: 'AFN', name: 'Афганский афгани', symbol: '؋', flag: '🇦🇫' },
+    { code: 'ALL', name: 'Албанский лек', symbol: 'L', flag: '🇦🇱' },
+    { code: 'AMD', name: 'Армянский драм', symbol: '֏', flag: '🇦🇲' },
+    {
+      code: 'ANG',
+      name: 'Нидерландский антильский гульден',
+      symbol: 'ƒ',
+      flag: '🇧🇶',
+    },
+    { code: 'AOA', name: 'Ангольская кванза', symbol: 'Kz', flag: '🇦🇴' },
+    { code: 'ARS', name: 'Аргентинский песо', symbol: '$', flag: '🇦🇷' },
+    { code: 'AWG', name: 'Арубанский флорин', symbol: 'ƒ', flag: '🇦🇼' },
+    { code: 'AZN', name: 'Азербайджанский манат', symbol: '₼', flag: '🇦🇿' },
+    { code: 'BAM', name: 'Боснийская марка', symbol: 'KM', flag: '🇧🇦' },
+    { code: 'BBD', name: 'Барбадосский доллар', symbol: '$', flag: '🇧🇧' },
+    { code: 'BDT', name: 'Бангладешская така', symbol: '৳', flag: '🇧🇩' },
+    { code: 'BGN', name: 'Болгарский лев', symbol: 'лв', flag: '🇧🇬' },
+    { code: 'BHD', name: 'Бахрейнский динар', symbol: '.د.ب', flag: '🇧🇭' },
+    { code: 'BIF', name: 'Бурундийский франк', symbol: 'FBu', flag: '🇧🇮' },
+    { code: 'BMD', name: 'Бермудский доллар', symbol: '$', flag: '🇧🇲' },
+    { code: 'BND', name: 'Брунейский доллар', symbol: '$', flag: '🇧🇳' },
+    { code: 'BOB', name: 'Боливийский боливиано', symbol: 'Bs', flag: '🇧🇴' },
+    { code: 'BSD', name: 'Багамский доллар', symbol: '$', flag: '🇧🇸' },
+    { code: 'BTN', name: 'Бутанский нгултрум', symbol: 'Nu', flag: '🇧🇹' },
+    { code: 'BWP', name: 'Ботсванская пула', symbol: 'P', flag: '🇧🇼' },
+    { code: 'BYN', name: 'Белорусский рубль', symbol: 'Br', flag: '🇧🇾' },
+    { code: 'BZD', name: 'Белизский доллар', symbol: '$', flag: '🇧🇿' },
+    { code: 'CDF', name: 'Конголезский франк', symbol: 'FC', flag: '🇨🇩' },
+    { code: 'CLP', name: 'Чилийский песо', symbol: '$', flag: '🇨🇱' },
+    { code: 'COP', name: 'Колумбийский песо', symbol: '$', flag: '🇨🇴' },
+    { code: 'CRC', name: 'Коста-риканский колон', symbol: '₡', flag: '🇨🇷' },
+    { code: 'CUP', name: 'Кубинский песо', symbol: '$', flag: '🇨🇺' },
+    { code: 'CVE', name: 'Эскудо Кабо-Верде', symbol: '$', flag: '🇨🇻' },
+    { code: 'CZK', name: 'Чешская крона', symbol: 'Kč', flag: '🇨🇿' },
+    { code: 'DJF', name: 'Джибутийский франк', symbol: 'Fdj', flag: '🇩🇯' },
+    { code: 'DOP', name: 'Доминиканский песо', symbol: '$', flag: '🇩🇴' },
+    { code: 'EGP', name: 'Египетский фунт', symbol: '£', flag: '🇪🇬' },
+    { code: 'ERN', name: 'Эритрейская накфа', symbol: 'Nfk', flag: '🇪🇷' },
+    { code: 'ETB', name: 'Эфиопский быр', symbol: 'Br', flag: '🇪🇹' },
+    { code: 'FJD', name: 'Фиджийский доллар', symbol: '$', flag: '🇫🇯' },
+    { code: 'FKP', name: 'Фолклендский фунт', symbol: '£', flag: '🇫🇰' },
+    { code: 'FOK', name: 'Фарерская крона', symbol: 'kr', flag: '🇫🇴' },
+    { code: 'GEL', name: 'Грузинский лари', symbol: '₾', flag: '🇬🇪' },
+    { code: 'GGP', name: 'Гернсийский фунт', symbol: '£', flag: '🇬🇬' },
+    { code: 'GHS', name: 'Ганский седи', symbol: '₵', flag: '🇬🇭' },
+    { code: 'GIP', name: 'Гибралтарский фунт', symbol: '£', flag: '🇬🇮' },
+    { code: 'GMD', name: 'Гамбийский даласи', symbol: 'D', flag: '🇬🇲' },
+    { code: 'GNF', name: 'Гвинейский франк', symbol: 'FG', flag: '🇬🇳' },
+    { code: 'GTQ', name: 'Гватемальский кетсаль', symbol: 'Q', flag: '🇬🇹' },
+    { code: 'GYD', name: 'Гайанский доллар', symbol: '$', flag: '🇬🇾' },
+    { code: 'HKD', name: 'Гонконгский доллар', symbol: '$', flag: '🇭🇰' },
+    { code: 'HNL', name: 'Гондурасская лемпира', symbol: 'L', flag: '🇭🇳' },
+    { code: 'HRK', name: 'Хорватская куна', symbol: 'kn', flag: '🇭🇷' },
+    { code: 'HTG', name: 'Гаитянский гурд', symbol: 'G', flag: '🇭🇹' },
+    { code: 'HUF', name: 'Венгерский форинт', symbol: 'Ft', flag: '🇭🇺' },
+    { code: 'IDR', name: 'Индонезийская рупия', symbol: 'Rp', flag: '🇮🇩' },
+    { code: 'ILS', name: 'Израильский шекель', symbol: '₪', flag: '🇮🇱' },
+    { code: 'IMP', name: 'Мэнский фунт', symbol: '£', flag: '🇮🇲' },
+    { code: 'IQD', name: 'Иракский динар', symbol: 'ع.د', flag: '🇮🇶' },
+    { code: 'IRR', name: 'Иранский риал', symbol: '﷼', flag: '🇮🇷' },
+    { code: 'ISK', name: 'Исландская крона', symbol: 'kr', flag: '🇮🇸' },
+    { code: 'JEP', name: 'Джерсийский фунт', symbol: '£', flag: '🇯🇪' },
+    { code: 'JMD', name: 'Ямайский доллар', symbol: '$', flag: '🇯🇲' },
+    { code: 'JOD', name: 'Иорданский динар', symbol: 'د.ا', flag: '🇯🇴' },
+    { code: 'KES', name: 'Кенийский шиллинг', symbol: 'KSh', flag: '🇰🇪' },
+    { code: 'KGS', name: 'Киргизский сом', symbol: 'с', flag: '🇰🇬' },
+    { code: 'KHR', name: 'Камбоджийский риель', symbol: '៛', flag: '🇰🇭' },
+    { code: 'KID', name: 'Кирибатийский доллар', symbol: '$', flag: '🇰🇮' },
+    { code: 'KMF', name: 'Коморский франк', symbol: 'CF', flag: '🇰🇲' },
+    { code: 'KWD', name: 'Кувейтский динар', symbol: 'د.ك', flag: '🇰🇼' },
+    { code: 'KYD', name: 'Кайманский доллар', symbol: '$', flag: '🇰🇾' },
+    { code: 'KZT', name: 'Казахстанский тенге', symbol: '₸', flag: '🇰🇿' },
+    { code: 'LAK', name: 'Лаосский кип', symbol: '₭', flag: '🇱🇦' },
+    { code: 'LBP', name: 'Ливанский фунт', symbol: 'ل.ل', flag: '🇱🇧' },
+    { code: 'LKR', name: 'Шри-ланкийская рупия', symbol: 'Rs', flag: '🇱🇰' },
+    { code: 'LRD', name: 'Либерийский доллар', symbol: '$', flag: '🇱🇷' },
+    { code: 'LSL', name: 'Лесотский лоти', symbol: 'L', flag: '🇱🇸' },
+    { code: 'LYD', name: 'Ливийский динар', symbol: 'ل.د', flag: '🇱🇾' },
+    { code: 'MAD', name: 'Марокканский дирхам', symbol: 'د.م', flag: '🇲🇦' },
+    { code: 'MDL', name: 'Молдавский лей', symbol: 'L', flag: '🇲🇩' },
+    { code: 'MGA', name: 'Малагасийский ариари', symbol: 'Ar', flag: '🇲🇬' },
+    { code: 'MKD', name: 'Македонский денар', symbol: 'ден', flag: '🇲🇰' },
+    { code: 'MMK', name: 'Мьянманский кят', symbol: 'K', flag: '🇲🇲' },
+    { code: 'MNT', name: 'Монгольский тугрик', symbol: '₮', flag: '🇲🇳' },
+    { code: 'MOP', name: 'Макао патака', symbol: 'MOP$', flag: '🇲🇴' },
+    { code: 'MRU', name: 'Мавританская угия', symbol: 'UM', flag: '🇲🇷' },
+    { code: 'MUR', name: 'Маврикийская рупия', symbol: '₨', flag: '🇲🇺' },
+    { code: 'MVR', name: 'Мальдивская руфия', symbol: 'Rf', flag: '🇲🇻' },
+    { code: 'MWK', name: 'Малавийская квача', symbol: 'MK', flag: '🇲🇼' },
+    { code: 'MYR', name: 'Малайзийский ринггит', symbol: 'RM', flag: '🇲🇾' },
+    { code: 'MZN', name: 'Мозамбикский метикал', symbol: 'MT', flag: '🇲🇿' },
+    { code: 'NAD', name: 'Намибийский доллар', symbol: '$', flag: '🇳🇦' },
+    { code: 'NGN', name: 'Нигерийская найра', symbol: '₦', flag: '🇳🇬' },
+    { code: 'NIO', name: 'Никарагуанская кордоба', symbol: 'C$', flag: '🇳🇮' },
+    { code: 'NPR', name: 'Непальская рупия', symbol: '₨', flag: '🇳🇵' },
+    { code: 'OMR', name: 'Оманский риал', symbol: 'ر.ع', flag: '🇴🇲' },
+    { code: 'PAB', name: 'Панамский бальбоа', symbol: 'B/.', flag: '🇵🇦' },
+    { code: 'PEN', name: 'Перуанский соль', symbol: 'S/', flag: '🇵🇪' },
+    { code: 'PGK', name: 'Папуа-новогвинейская кина', symbol: 'K', flag: '🇵🇬' },
+    { code: 'PHP', name: 'Филиппинский песо', symbol: '₱', flag: '🇵🇭' },
+    { code: 'PKR', name: 'Пакистанская рупия', symbol: '₨', flag: '🇵🇰' },
+    { code: 'PLN', name: 'Польский злотый', symbol: 'zł', flag: '🇵🇱' },
+    { code: 'PYG', name: 'Парагвайский гуарани', symbol: '₲', flag: '🇵🇾' },
+    { code: 'QAR', name: 'Катарский риал', symbol: 'ر.ق', flag: '🇶🇦' },
+    { code: 'RON', name: 'Румынский лей', symbol: 'lei', flag: '🇷🇴' },
+    { code: 'RSD', name: 'Сербский динар', symbol: 'дин', flag: '🇷🇸' },
+    { code: 'RWF', name: 'Руандский франк', symbol: 'FRw', flag: '🇷🇼' },
+    { code: 'SAR', name: 'Саудовский риял', symbol: 'ر.س', flag: '🇸🇦' },
+    { code: 'SBD', name: 'Соломоновский доллар', symbol: '$', flag: '🇸🇧' },
+    { code: 'SCR', name: 'Сейшельская рупия', symbol: '₨', flag: '🇸🇨' },
+    { code: 'SDG', name: 'Суданский фунт', symbol: 'ج.س', flag: '🇸🇩' },
+    { code: 'SHP', name: 'Фунт Святой Елены', symbol: '£', flag: '🇸🇭' },
+    { code: 'SLE', name: 'Сьерра-леонский леоне', symbol: 'Le', flag: '🇸🇱' },
+    { code: 'SLL', name: 'Сьерра-леонский леоне', symbol: 'Le', flag: '🇸🇱' },
+    { code: 'SOS', name: 'Сомалийский шиллинг', symbol: 'Sh', flag: '🇸🇴' },
+    { code: 'SRD', name: 'Суринамский доллар', symbol: '$', flag: '🇸🇷' },
+    { code: 'SSP', name: 'Южносуданский фунт', symbol: '£', flag: '🇸🇸' },
+    {
+      code: 'STN',
+      name: 'Добра Сан-Томе и Принсипи',
+      symbol: 'Db',
+      flag: '🇸🇹',
+    },
+    { code: 'SYP', name: 'Сирийский фунт', symbol: '£', flag: '🇸🇾' },
+    { code: 'SZL', name: 'Свазилендский лилангени', symbol: 'L', flag: '🇸🇿' },
+    { code: 'THB', name: 'Тайский бат', symbol: '฿', flag: '🇹🇭' },
+    { code: 'TJS', name: 'Таджикский сомони', symbol: 'ЅМ', flag: '🇹🇯' },
+    { code: 'TMT', name: 'Туркменский манат', symbol: 'T', flag: '🇹🇲' },
+    { code: 'TND', name: 'Тунисский динар', symbol: 'د.ت', flag: '🇹🇳' },
+    { code: 'TOP', name: 'Тонганская паанга', symbol: 'T$', flag: '🇹🇴' },
+    { code: 'TTD', name: 'Тринидад и Тобаго доллар', symbol: '$', flag: '🇹🇹' },
+    { code: 'TVD', name: 'Тувалуанский доллар', symbol: '$', flag: '🇹🇻' },
+    { code: 'TWD', name: 'Тайваньский доллар', symbol: 'NT$', flag: '🇹🇼' },
+    { code: 'TZS', name: 'Танзанийский шиллинг', symbol: 'TSh', flag: '🇹🇿' },
+    { code: 'UAH', name: 'Украинская гривна', symbol: '₴', flag: '🇺🇦' },
+    { code: 'UGX', name: 'Угандийский шиллинг', symbol: 'USh', flag: '🇺🇬' },
+    { code: 'UYU', name: 'Уругвайский песо', symbol: '$', flag: '🇺🇾' },
+    { code: 'UZS', name: 'Узбекский сум', symbol: "so'm", flag: '🇺🇿' },
+    { code: 'VES', name: 'Венесуэльский боливар', symbol: 'Bs', flag: '🇻🇪' },
+    { code: 'VND', name: 'Вьетнамский донг', symbol: '₫', flag: '🇻🇳' },
+    { code: 'VUV', name: 'Вануатский вату', symbol: 'VT', flag: '🇻🇺' },
+    { code: 'WST', name: 'Самоанская тала', symbol: 'T', flag: '🇼🇸' },
+    {
+      code: 'XAF',
+      name: 'Центральноафриканский франк',
+      symbol: 'FCFA',
+      flag: '🇨🇫',
+    },
+    { code: 'XCD', name: 'Восточнокарибский доллар', symbol: '$', flag: '🇦🇬' },
+    { code: 'XCG', name: 'Восточнокарибский доллар', symbol: '$', flag: '🇦🇬' },
+    {
+      code: 'XDR',
+      name: 'Специальные права заимствования',
+      symbol: 'SDR',
+      flag: '🌍',
+    },
+    {
+      code: 'XOF',
+      name: 'Западноафриканский франк',
+      symbol: 'CFA',
+      flag: '🇧🇯',
+    },
+    {
+      code: 'XPF',
+      name: 'Французский тихоокеанский франк',
+      symbol: 'F',
+      flag: '🇵🇫',
+    },
+    { code: 'YER', name: 'Йеменский риал', symbol: '﷼', flag: '🇾🇪' },
+    { code: 'ZMW', name: 'Замбийская квача', symbol: 'ZK', flag: '🇿🇲' },
+    { code: 'ZWL', name: 'Зимбабвийский доллар', symbol: '$', flag: '🇿🇼' },
   ];
 
   // Кэш для курсов валют
@@ -127,7 +299,6 @@ const CurrencyConverter: React.FC = () => {
         rate: rate.toFixed(4),
         convertedAmount: convertedAmount.toFixed(2),
         lastUpdated: lastUpdated || new Date().toISOString().split('T')[0],
-        historicalData: generateHistoricalData(amountNum, rate),
         marketInfo: getMarketInfo(fromCurrency, toCurrency),
       });
     } catch (error) {
@@ -220,29 +391,6 @@ const CurrencyConverter: React.FC = () => {
 
     const key = `${from}-${to}`;
     return approximateRates[key] || 1;
-  };
-
-  const generateHistoricalData = (amount: number, rate: number) => {
-    const data = [];
-    const today = new Date();
-
-    for (let i = 30; i >= 0; i--) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - i);
-
-      // Симулируем колебания курса (±2%)
-      const variation = 1 + (Math.random() - 0.5) * 0.04;
-      const historicalRate = rate * variation;
-      const historicalAmount = amount * historicalRate;
-
-      data.push({
-        date: date.toISOString().split('T')[0],
-        rate: historicalRate.toFixed(4),
-        amount: historicalAmount.toFixed(2),
-      });
-    }
-
-    return data;
   };
 
   const getMarketInfo = (from: string, to: string) => {
@@ -391,112 +539,73 @@ const CurrencyConverter: React.FC = () => {
         <div className="result">
           <h3>Результат конвертации</h3>
 
-          <div className="conversionSummary">
-            <div className="summaryItem">
-              <span className="label">Исходная сумма:</span>
-              <span className="value">
+          <div className={styles.conversionSummary}>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Исходная сумма:</span>
+              <span className={styles.value}>
                 {result.amount} {getCurrencyDisplay(result.fromCurrency)}
               </span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Курс обмена:</span>
-              <span className="value">
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Курс обмена:</span>
+              <span className={styles.value}>
                 1 {result.fromCurrency} = {result.rate} {result.toCurrency}
               </span>
             </div>
-            <div className="summaryItem">
-              <span className="label">Дата курса:</span>
-              <span className="value">{result.lastUpdated}</span>
+            <div className={styles.summaryItem}>
+              <span className={styles.label}>Дата курса:</span>
+              <span className={styles.value}>{result.lastUpdated}</span>
             </div>
           </div>
 
-          <div className="resultValue">
-            <span className="amount">{result.convertedAmount}</span>
-            <span className="unit">
+          <div className={styles.resultValue}>
+            <span className={styles.amount}>{result.convertedAmount}</span>
+            <span className={styles.unit}>
               {getCurrencyDisplay(result.toCurrency)}
             </span>
           </div>
 
-          <div className="marketAnalysis">
-            <h4>Рыночная аналитика:</h4>
-            <div className="marketGrid">
-              <div className="marketItem">
-                <span className="label">Тренд:</span>
-                <span className="value">{result.marketInfo.trend}</span>
-              </div>
-              <div className="marketItem">
-                <span className="label">Уверенность:</span>
-                <span className="value">{result.marketInfo.confidence}</span>
-              </div>
-              <div className="marketItem">
-                <span className="label">Причина:</span>
-                <span className="value">{result.marketInfo.reason}</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="historicalData">
-            <h4>История курса (последние 7 дней):</h4>
-            <div className="chartContainer">
-              <div className="chartLabels">
-                <span>Курс</span>
-                <span>Сумма</span>
-              </div>
-              <div className="chartData">
-                {result.historicalData
-                  .slice(-7)
-                  .map((day: any, index: number) => (
-                    <div key={index} className="chartDay">
-                      <div className="dayDate">{day.date}</div>
-                      <div className="dayRate">{day.rate}</div>
-                      <div className="dayAmount">{day.amount}</div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="currencyInfo">
+          <div className={styles.currencyInfo}>
             <h4>Информация о валютах:</h4>
-            <div className="currencyGrid">
-              <div className="currencyCard">
-                <div className="currencyHeader">
-                  <span className="currencyFlag">
+            <div className={styles.currencyGrid}>
+              <div className={styles.currencyCard}>
+                <div className={styles.currencyHeader}>
+                  <span className={styles.currencyFlag}>
                     {result.fromCurrencyInfo?.flag}
                   </span>
-                  <span className="currencyCode">
+                  <span className={styles.currencyCode}>
                     {result.fromCurrencyInfo?.code}
                   </span>
                 </div>
-                <div className="currencyName">
+                <div className={styles.currencyName}>
                   {result.fromCurrencyInfo?.name}
                 </div>
-                <div className="currencySymbol">
+                <div className={styles.currencySymbol}>
                   {result.fromCurrencyInfo?.symbol}
                 </div>
               </div>
-              <div className="currencyCard">
-                <div className="currencyHeader">
-                  <span className="currencyFlag">
+              <div className={styles.currencyCard}>
+                <div className={styles.currencyHeader}>
+                  <span className={styles.currencyFlag}>
                     {result.toCurrencyInfo?.flag}
                   </span>
-                  <span className="currencyCode">
+                  <span className={styles.currencyCode}>
                     {result.toCurrencyInfo?.code}
                   </span>
                 </div>
-                <div className="currencyName">
+                <div className={styles.currencyName}>
                   {result.toCurrencyInfo?.name}
                 </div>
-                <div className="currencySymbol">
+                <div className={styles.currencySymbol}>
                   {result.toCurrencyInfo?.symbol}
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <strong>Рекомендации:</strong>
-            <ul className="recommendationsList">
+            <ul className={styles.recommendationsList}>
               <li>Курсы валют обновляются ежедневно</li>
               <li>Для крупных сумм используйте банковские курсы</li>
               <li>Учитывайте комиссии при обмене валют</li>

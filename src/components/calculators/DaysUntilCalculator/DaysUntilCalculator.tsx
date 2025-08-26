@@ -8,6 +8,7 @@ const DaysUntilCalculator: React.FC = () => {
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState('');
   const [isEmbedded, setIsEmbeded] = useState(false);
+  const [preset, setPreset] = useState('');
 
   // Проверяем, открыт ли калькулятор в embed режиме
   useEffect(() => {
@@ -18,6 +19,12 @@ const DaysUntilCalculator: React.FC = () => {
   // Получаем дату из URL параметров (для embed)
   useEffect(() => {
     const dateFromUrl = searchParams.get('date');
+    const presetFromUrl = searchParams.get('preset');
+
+    if (presetFromUrl) {
+      setPreset(presetFromUrl);
+    }
+
     if (dateFromUrl) {
       setTargetDate(dateFromUrl);
       calculateDaysUntil(dateFromUrl);
@@ -63,6 +70,8 @@ const DaysUntilCalculator: React.FC = () => {
 
   const setPresetDate = (preset: string) => {
     let date: Date;
+
+    setPreset(preset);
 
     switch (preset) {
       case 'newyear':
@@ -124,41 +133,41 @@ const DaysUntilCalculator: React.FC = () => {
   const getPresetDescription = (preset: string) => {
     switch (preset) {
       case 'newyear':
-        return 'До Нового года';
+        return 'до Нового года';
       case 'christmas':
-        return 'До Рождества';
+        return 'до Рождества';
       case 'birthday':
-        return 'До дня рождения';
+        return 'до дня рождения';
       case 'summer':
-        return 'До лета';
+        return 'до лета';
       case 'vacation':
-        return 'До отпуска (через 3 месяца)';
+        return 'до отпуска (через 3 месяца)';
       case 'weekend':
-        return 'До выходных';
+        return 'до выходных';
       default:
         return '';
     }
   };
 
   const getResultDescription = (days: number) => {
-    if (days === 0) return 'Сегодня!';
-    if (days === 1) return 'Завтра!';
-    if (days === -1) return 'Вчера';
-    if (days === 7) return 'Через неделю';
-    if (days === 30) return 'Через месяц';
-    if (days === 365) return 'Через год';
+    if (days === 0) return 'Это уже сегодня!';
+    if (days === 1) return 'Это уже завтра!';
+    if (days === -1) return 'Это был вчера';
+    if (days === 7) return 'Это через неделю';
+    if (days === 30) return 'Еще месяц';
+    if (days === 365) return 'Еще год';
 
     if (days > 0) {
-      if (days < 7) return `Через ${days} ${getDayWord(days)}`;
+      if (days < 7) return `Еще ${days} ${getDayWord(days)}`;
       if (days < 30)
-        return `Через ${Math.floor(days / 7)} ${getWeekWord(
+        return `Еще ${Math.floor(days / 7)} ${getWeekWord(
           Math.floor(days / 7)
         )}`;
       if (days < 365)
-        return `Через ${Math.floor(days / 30)} ${getMonthWord(
+        return `Еще ${Math.floor(days / 30)} ${getMonthWord(
           Math.floor(days / 30)
         )}`;
-      return `Через ${Math.floor(days / 365)} ${getYearWord(
+      return `Еще ${Math.floor(days / 365)} ${getYearWord(
         Math.floor(days / 365)
       )}`;
     } else {
@@ -205,7 +214,7 @@ const DaysUntilCalculator: React.FC = () => {
   const getEmbedUrl = () => {
     if (!targetDate) return '';
     const baseUrl = window.location.origin;
-    return `${baseUrl}/embed/other/days-until?date=${targetDate}`;
+    return `${baseUrl}/embed/other/days-until?date=${targetDate}&preset=${preset}`;
   };
 
   const copyEmbedUrl = async () => {
@@ -230,106 +239,107 @@ const DaysUntilCalculator: React.FC = () => {
   return (
     <div className={`${styles.calculator} dateCalculator`}>
       <div className="calculatorHeader">
-        <h2>⏰ Счетчик дней до даты</h2>
-        <p>
-          Узнайте, сколько дней осталось до важного события. Используйте готовые
-          пресеты или выберите свою дату.
-        </p>
+        <h2>⏰ Счетчик дней {getPresetDescription(preset)}</h2>
+        {!isEmbedded && (
+          <p>
+            Узнайте, сколько дней осталось до важного события. Используйте
+            готовые пресеты или выберите свою дату.
+          </p>
+        )}
       </div>
 
-      <form className="calculatorForm" onSubmit={handleSubmit}>
-        <div className="inputGroup">
-          <label>Быстрые пресеты</label>
-          <div className="presetButtons">
-            {[
-              {
-                key: 'newyear',
-                label: '🎆 Новый год',
-                color: 'var(--primary-500)',
-              },
-              {
-                key: 'christmas',
-                label: '🎄 Рождество',
-                color: 'var(--success-500)',
-              },
-              {
-                key: 'birthday',
-                label: '🎂 День рождения',
-                color: 'var(--accent-500)',
-              },
-              { key: 'summer', label: '☀️ Лето', color: 'var(--warning-500)' },
-              { key: 'vacation', label: '🏖️ Отпуск', color: 'var(--info-500)' },
-              {
-                key: 'weekend',
-                label: '🎉 Выходные',
-                color: 'var(--purple-500)',
-              },
-            ].map((preset) => (
-              <button
-                key={preset.key}
-                type="button"
-                onClick={() => setPresetDate(preset.key)}
-                style={{
-                  background: preset.color,
-                  color: 'white',
-                  border: 'none',
-                  padding: '0.5rem 1rem',
-                  borderRadius: 'var(--radius-md)',
-                  fontSize: '0.9rem',
-                  cursor: 'pointer',
-                  margin: '0.25rem',
-                  transition: 'all var(--transition-normal)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.05)';
-                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                {preset.label}
-              </button>
-            ))}
+      {!isEmbedded && (
+        <form className="calculatorForm" onSubmit={handleSubmit}>
+          <div className="inputGroup">
+            <label>Быстрые пресеты</label>
+            <div className={styles.presetButtons}>
+              {[
+                {
+                  key: 'newyear',
+                  label: '🎆 Новый год',
+                  color: 'var(--primary-500)',
+                },
+                {
+                  key: 'christmas',
+                  label: '🎄 Рождество',
+                  color: 'var(--success-500)',
+                },
+                {
+                  key: 'summer',
+                  label: '☀️ Лето',
+                  color: 'var(--warning-500)',
+                },
+                {
+                  key: 'weekend',
+                  label: '🎉 Выходные',
+                  color: 'var(--accent-500)',
+                },
+              ].map((preset) => (
+                <button
+                  key={preset.key}
+                  type="button"
+                  onClick={() => setPresetDate(preset.key)}
+                  style={{
+                    background: preset.color,
+                    color: 'white',
+                    border: 'none',
+                    padding: '0.5rem 1rem',
+                    borderRadius: 'var(--radius-md)',
+                    fontSize: '0.9rem',
+                    cursor: 'pointer',
+                    margin: '0.25rem',
+                    transition: 'all var(--transition-normal)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  {preset.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="inputGroup">
-          <label htmlFor="targetDate">Или выберите свою дату</label>
-          <input
-            id="targetDate"
-            type="date"
-            value={targetDate}
-            onChange={(e) => setTargetDate(e.target.value)}
-          />
-        </div>
+          <div className="inputGroup">
+            <label htmlFor="targetDate">Или выберите свою дату</label>
+            <input
+              id="targetDate"
+              type="date"
+              value={targetDate}
+              onChange={(e) => setTargetDate(e.target.value)}
+            />
+          </div>
 
-        {error && <div className="error">{error}</div>}
-
-        <div className="inputGroup">
-          <button type="submit" className="calculateBtn">
-            Рассчитать дни
-          </button>
-        </div>
-      </form>
+          {error && <div className="error">{error}</div>}
+          {!isEmbedded && (
+            <div className="inputGroup">
+              <button type="submit" className="calculateBtn">
+                Рассчитать дни
+              </button>
+            </div>
+          )}
+        </form>
+      )}
 
       {result !== null && (
         <div className="result dateResult">
-          <h3>Результат</h3>
           <div className="resultValue">
             <span className="amount">{Math.abs(result)}</span>
             <span className="unit">{getDayWord(Math.abs(result))}</span>
+            <span className="unit"> {getPresetDescription(preset)}</span>
           </div>
-          <p className="recommendation">
-            <strong>Описание:</strong> {getResultDescription(result)}
-          </p>
+          <p className="recommendation">{getResultDescription(result)}</p>
 
           {!isEmbedded && (
-            <div className="embedSection">
+            <div className={styles.embedSection}>
               <h4>Встроить на сайт</h4>
               <p>Скопируйте ссылку для встраивания на ваш сайт:</p>
-              <div className="embedUrl">
+              <div className={styles.embedUrl}>
                 <input
                   type="text"
                   value={getEmbedUrl()}
@@ -364,16 +374,18 @@ const DaysUntilCalculator: React.FC = () => {
         </div>
       )}
 
-      <div className="inputGroup" style={{ marginTop: '2rem' }}>
-        <button
-          type="button"
-          onClick={clearForm}
-          className="calculateBtn"
-          style={{ background: 'var(--gray-500)' }}
-        >
-          Очистить форму
-        </button>
-      </div>
+      {!isEmbedded && (
+        <div className="inputGroup" style={{ marginTop: '2rem' }}>
+          <button
+            type="button"
+            onClick={clearForm}
+            className="calculateBtn"
+            style={{ background: 'var(--gray-500)' }}
+          >
+            Очистить форму
+          </button>
+        </div>
+      )}
     </div>
   );
 };

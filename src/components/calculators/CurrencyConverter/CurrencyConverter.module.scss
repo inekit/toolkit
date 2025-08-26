@@ -268,54 +268,6 @@
   }
 }
 
-.marketAnalysis {
-  margin: 1.5rem 0;
-  padding: 1.5rem;
-  background: var(--info-50);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--info-200);
-
-  h4 {
-    color: var(--info-800);
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: center;
-  }
-
-  .marketGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-
-    @media (max-width: 640px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .marketItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background: white;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--info-200);
-
-    .label {
-      color: var(--info-700);
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-
-    .value {
-      color: var(--info-800);
-      font-weight: 600;
-      font-size: 1rem;
-    }
-  }
-}
-
 .historicalData {
   margin: 1.5rem 0;
   padding: 1.5rem;
@@ -470,6 +422,7 @@
   .recommendationsList {
     margin: 1rem 0;
     padding-left: 1.5rem;
+    list-style: none;
 
     li {
       color: var(--success-700);
