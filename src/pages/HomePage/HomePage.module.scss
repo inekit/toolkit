@@ -101,18 +101,158 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     .heroIcon {
+      position: relative;
       filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.2));
       animation: float 6s ease-in-out infinite;
+      z-index: 2;
 
+      // Основная иконка
+      svg {
+        width: 8rem;
+        height: 8rem;
+        filter: drop-shadow(0 4px 16px rgba(255, 255, 255, 0.3));
+        transition: all var(--transition-normal);
+      }
+
+      // Светящийся фон
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12rem;
+        height: 12rem;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.15) 0%,
+          rgba(255, 255, 255, 0.1) 40%,
+          rgba(255, 255, 255, 0.05) 70%,
+          transparent 100%
+        );
+        border-radius: 50%;
+        animation: pulse 4s ease-in-out infinite;
+        z-index: -1;
+      }
+
+      // Дополнительные световые эффекты
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 16rem;
+        height: 16rem;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          rgba(255, 255, 255, 0.1) 90deg,
+          transparent 180deg,
+          rgba(255, 255, 255, 0.05) 270deg,
+          transparent 360deg
+        );
+        border-radius: 50%;
+        animation: rotate 20s linear infinite;
+        z-index: -2;
+      }
+
+      // Hover эффекты
+      &:hover {
+        svg {
+          transform: scale(1.1) rotate(5deg);
+          filter: drop-shadow(0 8px 24px rgba(255, 255, 255, 0.4));
+        }
+
+        &::before {
+          animation: pulse 2s ease-in-out infinite;
+        }
+      }
+
+      // Анимации
       @keyframes float {
         0%,
         100% {
-          transform: translateY(0px);
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-15px) rotate(1deg);
         }
         50% {
-          transform: translateY(-20px);
+          transform: translateY(-25px) rotate(0deg);
+        }
+        75% {
+          transform: translateY(-15px) rotate(-1deg);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.8;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+      }
+
+      @keyframes rotate {
+        from {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      // Дополнительные декоративные элементы
+      .decoration {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: sparkle 3s ease-in-out infinite;
+
+        &:nth-child(1) {
+          top: -2rem;
+          left: 2rem;
+          animation-delay: 0s;
+        }
+
+        &:nth-child(2) {
+          top: 1rem;
+          right: -1rem;
+          animation-delay: 0.5s;
+        }
+
+        &:nth-child(3) {
+          bottom: -1rem;
+          left: 1rem;
+          animation-delay: 1s;
+        }
+
+        &:nth-child(4) {
+          bottom: 2rem;
+          right: 2rem;
+          animation-delay: 1.5s;
+        }
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
         }
       }
     }
@@ -677,13 +817,71 @@
       text-align: center;
     }
 
-    .heroContent .heroTitle {
-      font-size: clamp(2.5rem, 8vw, 3.5rem);
+    .heroContent {
+      order: 2;
+
+      .heroTitle {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+      }
+
+      .heroDescription {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      .heroActions {
+        justify-content: center;
+
+        .btn {
+          min-width: 160px;
+          font-size: 1rem;
+          padding: 0.875rem 1.5rem;
+        }
+      }
     }
 
-    .heroVisual .heroIcon svg {
-      width: 8rem;
-      height: 8rem;
+    .heroVisual {
+      order: 1;
+
+      .heroIcon {
+        margin-top: 50px;
+        svg {
+          width: 6rem;
+          height: 6rem;
+        }
+
+        &::before {
+          width: 8rem;
+          height: 8rem;
+        }
+
+        &::after {
+          width: 10rem;
+          height: 10rem;
+        }
+
+        .decoration {
+          &:nth-child(1) {
+            top: -1.5rem;
+            left: 1.5rem;
+          }
+
+          &:nth-child(2) {
+            top: 0.75rem;
+            right: -0.75rem;
+          }
+
+          &:nth-child(3) {
+            bottom: -0.75rem;
+            left: 0.75rem;
+          }
+
+          &:nth-child(4) {
+            bottom: 1.5rem;
+            right: 1.5rem;
+          }
+        }
+      }
     }
   }
 
@@ -718,6 +916,27 @@
     .orderBtn {
       width: 100%;
       max-width: 300px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    .heroVisual .heroIcon {
+      svg {
+        width: 5rem;
+        height: 5rem;
+      }
+
+      &::before {
+        width: 6rem;
+        height: 6rem;
+      }
+
+      &::after {
+        width: 8rem;
+        height: 8rem;
+      }
     }
   }
 }

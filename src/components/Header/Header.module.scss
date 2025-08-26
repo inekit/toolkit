@@ -96,44 +96,38 @@
 
 .menuToggle {
   display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
-  background: transparent;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--gray-100);
   border: none;
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  padding: 0;
+  padding: 0.5rem;
+  position: relative;
+  transition: all var(--transition-normal);
   z-index: 10;
+  color: var(--gray-600);
+
+  &:hover {
+    background: var(--gray-200);
+    transform: scale(1.05);
+    color: var(--gray-700);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .menuIcon {
-  width: 2rem;
-  height: 0.25rem;
-  background: var(--gray-600);
-  border-radius: 10px;
-  transition: all 0.3s linear;
-  position: relative;
-  transform-origin: 1px;
+  width: 100%;
+  height: 100%;
+  transition: all var(--transition-normal);
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 2rem;
-    height: 0.25rem;
-    background: var(--gray-600);
-    border-radius: 10px;
-    transition: all 0.3s linear;
-  }
-
-  &::before {
-    transform: translateY(-0.75rem);
-  }
-
-  &::after {
-    transform: translateY(0.75rem);
-  }
+.menuLine {
+  transition: all var(--transition-normal);
+  transform-origin: center;
 }
 
 // Мобильное меню
@@ -162,18 +156,29 @@
   }
 
   .menuToggle {
-    display: flex;
+    display: block;
   }
 
-  .navOpen .menuIcon {
-    background: transparent;
+  // Анимация кнопки при открытом меню
+  .navOpen .menuToggle {
+    background: var(--primary-100);
+    color: var(--primary-600);
 
-    &::before {
-      transform: rotate(45deg);
+    .menuIcon {
+      transform: rotate(90deg);
     }
 
-    &::after {
-      transform: rotate(-45deg);
+    .menuLine:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menuLine:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .menuLine:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
     }
   }
 }

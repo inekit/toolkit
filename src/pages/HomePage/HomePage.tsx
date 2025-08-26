@@ -67,6 +67,10 @@ const HomePage: React.FC = () => {
           <div className={styles.heroVisual}>
             <div className={styles.heroIcon}>
               <Logo size="large" />
+              <div className={styles.decoration}></div>
+              <div className={styles.decoration}></div>
+              <div className={styles.decoration}></div>
+              <div className={styles.decoration}></div>
             </div>
           </div>
         </div>
@@ -145,7 +149,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Информация о проекте */}
-      <section className={styles.projectInfo}>
+      <section id="about-section" className={styles.projectInfo}>
         <div className="container">
           <div className={styles.sectionHeader}>
             <h2>💝 О проекте</h2>

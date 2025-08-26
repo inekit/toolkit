@@ -5,14 +5,28 @@
 .searchToggle {
   background: none;
   border: none;
-  font-size: 1.25rem;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: var(--radius-md);
-  transition: all 0.2s ease-in-out;
+  transition: all var(--transition-normal);
+  color: var(--gray-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background: var(--gray-100);
+    color: var(--gray-700);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -28,10 +42,11 @@
   z-index: 1000;
   margin-top: 0.5rem;
   overflow: hidden;
+  padding: 1rem;
 }
 
 .searchForm {
-  padding: 1rem;
+  //padding: 1rem;
   border-bottom: 1px solid var(--gray-100);
 }
 
@@ -150,9 +165,16 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.25rem;
   color: var(--gray-400);
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .clearButton {
@@ -162,16 +184,28 @@
   transform: translateY(-50%);
   background: none;
   border: none;
-  font-size: 1.125rem;
   color: var(--gray-400);
   cursor: pointer;
   padding: 0.25rem;
   border-radius: var(--radius-sm);
-  transition: all 0.2s ease-in-out;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     color: var(--gray-600);
     background: var(--gray-100);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
   }
 }
 
