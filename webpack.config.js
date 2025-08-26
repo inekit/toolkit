@@ -6,7 +6,7 @@ const webpack = require('webpack');
 // Определяем переменные окружения
 const isProduction = process.env.NODE_ENV === 'production';
 const PUBLIC_URL =
-  process.env.PUBLIC_URL || (isProduction ? 'https://counterplus.ru' : '/');
+  process.env.PUBLIC_URL || (isProduction ? 'https://counterplus.ru/' : '/');
 
 module.exports = {
   entry: './src/index.tsx',
