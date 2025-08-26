@@ -19,12 +19,40 @@
       sizes="32x32"
       type="image/png"
     />
-    <link rel="apple-touch-icon" href="<%= PUBLIC_URL %>/icon-192x192.png" />
+    <link
+      rel="apple-touch-icon"
+      href="<%= PUBLIC_URL %>/apple-touch-icon.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="<%= PUBLIC_URL %>/icon-152x152.png"
+      sizes="152x152"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="<%= PUBLIC_URL %>/icon-192x192.png"
+      sizes="192x192"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="<%= PUBLIC_URL %>/icon-512x512.png"
+      sizes="512x512"
+    />
     <link rel="manifest" href="<%= PUBLIC_URL %>/manifest.json" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#3B82F6" />
     <meta name="color-scheme" content="light dark" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="<%= APP_NAME %>" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#3B82F6" />
+    <meta
+      name="msapplication-TileImage"
+      content="<%= PUBLIC_URL %>/icon-192x192.png"
+    />
+    <meta name="msapplication-config" content="none" />
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="<%= APP_DESCRIPTION %>" />
@@ -45,6 +73,7 @@
     <meta property="og:description" content="<%= APP_DESCRIPTION %>" />
     <meta property="og:image" content="<%= PUBLIC_URL %>/icon-512x512.png" />
     <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="<%= APP_NAME %>" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -54,16 +83,14 @@
       content="<%= APP_NAME %> - Калькуляторы и конвертеры"
     />
     <meta property="twitter:description" content="<%= APP_DESCRIPTION %>" />
-    <meta property="og:image" content="<%= PUBLIC_URL %>/icon-512x512.png" />
+    <meta
+      property="twitter:image"
+      content="<%= PUBLIC_URL %>/icon-512x512.png"
+    />
 
     <!-- Дополнительные мета-теги -->
     <meta name="application-name" content="<%= APP_NAME %>" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="<%= APP_NAME %>" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="msapplication-TileColor" content="#3B82F6" />
     <meta name="msapplication-tap-highlight" content="no" />
 
     <base href="<%= PUBLIC_URL %>" />
