@@ -115,3 +115,68 @@
     color: var(--success-800);
   }
 }
+
+// Специфичные стили для калькулятора краски
+.calculator {
+  // Используем общие стили из calculators.scss
+}
+
+.paintSummary {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--primary-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--primary-200);
+
+  .summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--primary-100);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: var(--primary-700);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .value {
+      color: var(--primary-800);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+.canRecommendations {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--success-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--success-200);
+
+  .canItem {
+    color: var(--success-700);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background: white;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--success-200);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .note {
+      color: var(--success-600);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+  }
+}

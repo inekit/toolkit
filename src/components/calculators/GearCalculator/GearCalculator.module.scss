@@ -1,0 +1,164 @@
+// Специфичные стили для калькулятора передач
+.calculator {
+  // Используем общие стили из calculators.scss
+}
+
+.gearSummary {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--accent-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--accent-200);
+
+  .summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--accent-100);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: var(--accent-700);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .value {
+      color: var(--accent-800);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+.gearAnalysis {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--success-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--success-200);
+
+  h4 {
+    color: var(--success-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .analysisGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .analysisItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--success-200);
+
+    .label {
+      color: var(--success-700);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .value {
+      color: var(--success-800);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.gearTable {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--warning-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--warning-200);
+
+  h4 {
+    color: var(--warning-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .tableContainer {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--warning-200);
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      font-size: 0.9rem;
+
+      th,
+      td {
+        padding: 0.75rem;
+        text-align: center;
+        border-bottom: 1px solid var(--warning-100);
+      }
+
+      th {
+        background: var(--warning-100);
+        color: var(--warning-800);
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      td {
+        color: var(--warning-700);
+        font-weight: 500;
+      }
+
+      tbody tr:hover {
+        background: var(--warning-50);
+      }
+    }
+
+    .tableNote {
+      margin: 1rem 0 0 0;
+      padding: 0.75rem;
+      background: var(--warning-100);
+      color: var(--warning-700);
+      font-size: 0.85rem;
+      text-align: center;
+      border-top: 1px solid var(--warning-200);
+    }
+  }
+}
+
+.recommendationsList {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+
+  li {
+    color: var(--success-700);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

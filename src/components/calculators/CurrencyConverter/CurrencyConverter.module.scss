@@ -1,0 +1,485 @@
+// Специфичные стили для конвертера валют
+.calculator {
+  // Используем общие стили из calculators.scss
+}
+
+.lastUpdated {
+  text-align: center;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: var(--info-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--info-200);
+
+  small {
+    color: var(--info-600);
+    font-size: 0.85rem;
+  }
+}
+
+.updateRatesBtn {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--info-300);
+  border-radius: var(--radius-md);
+  color: var(--info-700);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background: var(--info-50);
+    border-color: var(--info-400);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--info-500);
+    box-shadow: 0 0 0 3px var(--info-100);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    background: var(--gray-100);
+    border-color: var(--gray-300);
+    color: var(--gray-500);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.currencySelection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .currencyFrom,
+  .currencyTo {
+    flex: 1;
+    min-width: 0;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--primary-700);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--primary-200);
+      border-radius: var(--radius-md);
+      background: white;
+      color: var(--primary-800);
+      font-size: 0.9rem;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-400);
+        box-shadow: 0 0 0 3px var(--primary-100);
+      }
+    }
+  }
+}
+
+.swapButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid var(--primary-300);
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--primary-50) 0%,
+    var(--primary-100) 100%
+  );
+  color: var(--primary-600);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  &:hover {
+    background: linear-gradient(
+      135deg,
+      var(--primary-100) 0%,
+      var(--primary-200) 100%
+    );
+    border-color: var(--primary-400);
+    color: var(--primary-700);
+    transform: scale(1.05) rotate(180deg);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  &:active {
+    transform: scale(0.98) rotate(180deg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-200), 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .calculateBtn {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+.conversionSummary {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--primary-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--primary-200);
+
+  .summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--primary-100);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: var(--primary-700);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .value {
+      color: var(--primary-800);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+.resultValue {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: var(--accent-50);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--accent-200);
+
+  .amount {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-800);
+    margin-bottom: 0.5rem;
+  }
+
+  .unit {
+    font-size: 1.1rem;
+    color: var(--accent-600);
+    font-weight: 500;
+  }
+}
+
+.marketAnalysis {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--info-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--info-200);
+
+  h4 {
+    color: var(--info-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .marketGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .marketItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--info-200);
+
+    .label {
+      color: var(--info-700);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .value {
+      color: var(--info-800);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+.historicalData {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--success-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--success-200);
+
+  h4 {
+    color: var(--success-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .chartContainer {
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--success-200);
+    overflow: hidden;
+  }
+
+  .chartLabels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--success-100);
+    padding: 0.75rem;
+    font-weight: 600;
+    color: var(--success-800);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .chartData {
+    max-height: 300px;
+    overflow-y: auto;
+
+    .chartDay {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--success-100);
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--success-700);
+
+      &:hover {
+        background: var(--success-50);
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .dayDate {
+        font-weight: 500;
+      }
+
+      .dayRate {
+        font-family: monospace;
+      }
+
+      .dayAmount {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.currencyInfo {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--warning-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--warning-200);
+
+  h4 {
+    color: var(--warning-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .currencyGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .currencyCard {
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--warning-200);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .currencyHeader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      .currencyFlag {
+        font-size: 2rem;
+      }
+
+      .currencyCode {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--warning-800);
+      }
+    }
+
+    .currencyName {
+      color: var(--warning-700);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .currencySymbol {
+      color: var(--warning-600);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.recommendation {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--success-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--success-200);
+
+  strong {
+    color: var(--success-800);
+    font-size: 1rem;
+  }
+
+  .recommendationsList {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+
+    li {
+      color: var(--success-700);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

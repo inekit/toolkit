@@ -29,7 +29,8 @@ const Search: React.FC<SearchProps> = ({
   const location = useLocation();
 
   // Определяем текущую категорию из URL если sectionId не передан
-  const currentSectionId = sectionId || location.pathname.split('/')[1];
+  const currentSectionId =
+    variant === 'header' ? null : sectionId || location.pathname.split('/')[1];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

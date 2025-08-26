@@ -13,12 +13,6 @@ const Header: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
-  const navigation = SECTIONS.map((section) => ({
-    path: section.path,
-    label: section.title,
-    id: section.id,
-  }));
-
   const isActive = (path: string) => location.pathname === path;
 
   return (
@@ -39,7 +33,7 @@ const Header: React.FC = () => {
           >
             Главная
           </Link>
-          {navigation.map((item) => (
+          {SECTIONS.map((item) => (
             <div
               key={item.path}
               className={styles.navItem}
@@ -53,7 +47,7 @@ const Header: React.FC = () => {
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                {item.label}
+                {item.shortTitle}
               </Link>
               {activeDropdown === item.id && (
                 <HeaderDropdown

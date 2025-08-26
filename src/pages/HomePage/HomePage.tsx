@@ -162,7 +162,12 @@ const HomePage: React.FC = () => {
           </div>
           <div className={styles.projectStats}>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>12+</span>
+              <span className={styles.statNumber}>
+                {categories
+                  .map((category) => category.calculators.length)
+                  .reduce((a, b) => a + b, 0)}
+                +
+              </span>
               <span className={styles.statLabel}>Калькуляторов</span>
             </div>
             <div className={styles.stat}>

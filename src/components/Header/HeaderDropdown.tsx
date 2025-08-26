@@ -25,7 +25,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
         </div>
 
         <div className={styles.calculatorsList}>
-          {section.calculators.map((calculator) => (
+          {section.calculators.slice(0, 6).map((calculator) => (
             <Link
               key={calculator.id}
               to={`/${section.id}/${calculator.id}`}

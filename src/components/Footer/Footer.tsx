@@ -3,6 +3,7 @@ import { APP_CONFIG } from '@/config/app';
 import Logo from '@/components/Logo/Logo';
 import styles from './Footer.module.scss';
 import { useLocation } from 'react-router-dom';
+import { SECTIONS } from '@/config/sections';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -29,15 +30,13 @@ const Footer: React.FC = () => {
           <div className={styles.footerSection}>
             <h3>Категории</h3>
             <ul>
-              <li>
-                <a href="/repair">Ремонт</a>
-              </li>
-              <li>
-                <a href="/bicycle">Велосипед</a>
-              </li>
-              <li>
-                <a href="/other">Другое</a>
-              </li>
+              {SECTIONS.map((section) => (
+                <li key={section.id}>
+                  <a href={section.path}>
+                    {section.icon} {section.shortTitle}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

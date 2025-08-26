@@ -130,6 +130,66 @@
   }
 }
 
+// Специфичные стили для калькулятора плитки
+.calculator {
+  // Используем общие стили из calculators.scss
+}
+
+.tileSummary {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--success-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--success-200);
+
+  .summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--success-100);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: var(--success-700);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .value {
+      color: var(--success-800);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+.purchaseInfo {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--warning-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--warning-200);
+
+  p {
+    color: var(--warning-700);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--warning-800);
+      font-weight: 600;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .inputRow {
     grid-template-columns: 1fr;

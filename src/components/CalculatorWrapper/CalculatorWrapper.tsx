@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getCalculatorById, getSectionById } from '@/config/sections';
+import { getCalculatorById, getSectionById, SECTIONS } from '@/config/sections';
 import { Calculator } from '@/config/sections';
 import SEO from '@/components/SEO/SEO';
 import styles from './CalculatorWrapper.module.scss';
+
+// Расширенный интерфейс для калькулятора с sectionId
+interface CalculatorWithSection extends Calculator {
+  sectionId: string;
+}
 
 interface CalculatorWrapperProps {
   children: React.ReactNode;
@@ -77,6 +82,38 @@ const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ children }) => {
   };
 
   const section = getSectionById(sectionId);
+
+  // Получаем похожие калькуляторы (из той же категории и других)
+  const getSimilarCalculators = (): CalculatorWithSection[] => {
+    const currentSection = getSectionById(sectionId);
+    if (!currentSection) return [];
+
+    // Калькуляторы из той же категории (исключая текущий)
+    const sameCategory = currentSection.calculators
+      .filter((calc) => calc.id !== calculatorId)
+      .slice(0, 2)
+      .map((calc) => ({ ...calc, sectionId: sectionId }));
+
+    // Калькуляторы из других категорий с похожими тегами
+    const similarByTags = SECTIONS.filter((sect) => sect.id !== sectionId)
+      .flatMap((sect) =>
+        sect.calculators.map((calc) => ({ ...calc, sectionId: sect.id }))
+      )
+      .filter((calc) =>
+        calc.tags.some((tag) =>
+          calculator.tags.some(
+            (calcTag) =>
+              calcTag.toLowerCase().includes(tag.toLowerCase()) ||
+              tag.toLowerCase().includes(calcTag.toLowerCase())
+          )
+        )
+      )
+      .slice(0, 3);
+
+    return [...sameCategory, ...similarByTags].slice(0, 4);
+  };
+
+  const similarCalculators: CalculatorWithSection[] = getSimilarCalculators();
 
   return (
     <div className={styles.wrapper}>
@@ -300,6 +337,35 @@ const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ children }) => {
           </div>
         )}
       </div>
+
+      {/* Меню похожих калькуляторов */}
+      {similarCalculators.length > 0 && (
+        <div className={styles.similarCalculators}>
+          <h3>Похожие калькуляторы</h3>
+          <div className={styles.similarGrid}>
+            {similarCalculators.map((calc) => (
+              <a
+                key={calc.id}
+                href={`/${calc.sectionId}/${calc.id}`}
+                className={styles.similarCard}
+              >
+                <div className={styles.similarIcon}>{calc.icon}</div>
+                <div className={styles.similarInfo}>
+                  <h4>{calc.title}</h4>
+                  <p>{calc.description}</p>
+                  <div className={styles.similarTags}>
+                    {calc.tags.slice(0, 2).map((tag) => (
+                      <span key={tag} className={styles.similarTag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

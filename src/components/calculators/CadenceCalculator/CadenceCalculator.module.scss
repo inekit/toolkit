@@ -1,0 +1,329 @@
+// Специфичные стили для калькулятора каденса
+.calculator {
+  // Используем общие стили из calculators.scss
+}
+
+.cadenceSummary {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--primary-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--primary-200);
+
+  .summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--primary-100);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: var(--primary-700);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .value {
+      color: var(--primary-800);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+.cadenceResult {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--accent-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--accent-200);
+
+  h4 {
+    color: var(--accent-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .cadenceRange {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    .rangeItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: white;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--accent-200);
+
+      &.optimal {
+        background: var(--accent-100);
+        border-color: var(--accent-400);
+        transform: scale(1.02);
+        box-shadow: var(--shadow-md);
+      }
+
+      .label {
+        color: var(--accent-700);
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+
+      .value {
+        color: var(--accent-800);
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+.cadenceByTerrain {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--success-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--success-200);
+
+  h4 {
+    color: var(--success-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .terrainGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .terrainItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--success-200);
+
+    .label {
+      color: var(--success-700);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .value {
+      color: var(--success-800);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.gearRecommendations {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--warning-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--warning-200);
+
+  h4 {
+    color: var(--warning-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .gearGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .gearItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--warning-200);
+
+    .label {
+      color: var(--warning-700);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .value {
+      color: var(--warning-800);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+  }
+
+  .gearExplanation {
+    margin: 0;
+    padding: 1rem;
+    background: var(--warning-100);
+    border-radius: var(--radius-md);
+    color: var(--warning-700);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+}
+
+.trainingPlan {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--info-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--info-200);
+
+  h4 {
+    color: var(--info-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .trainingGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .trainingSection {
+    h5 {
+      color: var(--info-700);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .trainingItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      background: white;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--info-200);
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .label {
+        color: var(--info-700);
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .value {
+        color: var(--info-800);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+.efficiencyAnalysis {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--success-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--success-200);
+
+  h4 {
+    color: var(--success-800);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .efficiencyGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .efficiencyItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--success-200);
+
+    &.overall {
+      background: var(--success-100);
+      border-color: var(--success-400);
+      grid-column: 1 / -1;
+      font-weight: 600;
+    }
+
+    .label {
+      color: var(--success-700);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .value {
+      color: var(--success-800);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.recommendationsList {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+
+  li {
+    color: var(--success-700);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

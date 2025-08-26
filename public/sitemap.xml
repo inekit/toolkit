@@ -3,7 +3,7 @@
   <!-- Главная страница -->
   <url>
     <loc>https://counterplus.ru/</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,21 +11,35 @@
   <!-- Страницы разделов -->
   <url>
     <loc>https://counterplus.ru/repair</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://counterplus.ru/bicycle</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/finance</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/health</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://counterplus.ru/other</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -33,7 +47,7 @@
   <!-- Условия использования -->
   <url>
     <loc>https://counterplus.ru/terms</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -41,28 +55,28 @@
   <!-- Калькуляторы ремонта -->
   <url>
     <loc>https://counterplus.ru/repair/paint</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://counterplus.ru/repair/tile</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://counterplus.ru/repair/cost</loc>
-    <lastmod>2024-01-01</lastmod>
+    <loc>https://counterplus.ru/repair/repair-cost</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://counterplus.ru/repair/foundation</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -70,57 +84,115 @@
   <!-- Велосипедные калькуляторы -->
   <url>
     <loc>https://counterplus.ru/bicycle/gear</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://counterplus.ru/bicycle/power</loc>
-    <lastmod>2024-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://counterplus.ru/bicycle/route</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://counterplus.ru/bicycle/cadence</loc>
-    <lastmod>2024-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Другие калькуляторы и конвертеры -->
-  <url>
-    <loc>https://counterplus.ru/other/financial</loc>
-    <lastmod>2024-01-01</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://counterplus.ru/other/cooking</loc>
-    <lastmod>2024-01-01</lastmod>
+    <loc>https://counterplus.ru/bicycle/spoke</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://counterplus.ru/other/currency</loc>
-    <lastmod>2024-01-01</lastmod>
+    <loc>https://counterplus.ru/bicycle/distance</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Финансовые калькуляторы -->
+  <url>
+    <loc>https://counterplus.ru/finance/mortgage</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/finance/investment</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/finance/loan</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/finance/currency</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   
+  <!-- Калькуляторы здоровья -->
   <url>
-    <loc>https://counterplus.ru/other/health</loc>
-    <lastmod>2024-01-01</lastmod>
+    <loc>https://counterplus.ru/health/bmi</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/health/calories</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/health/body-fat</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Полезные инструменты -->
+  <url>
+    <loc>https://counterplus.ru/other/cooking</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/other/days-until</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/other/pet-age</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://counterplus.ru/other/unit-converter</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
