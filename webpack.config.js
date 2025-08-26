@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 // Определяем переменные окружения
@@ -78,11 +79,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       templateParameters: {
-        PUBLIC_URL: PUBLIC_URL,
-        DOMAIN: 'counterplus.ru',
-        APP_NAME: 'Счетчик+',
-        APP_DESCRIPTION: 'Полезные калькуляторы для решения повседневных задач',
+        PUBLIC_URL: PUBLIC_URL, // Передается в HTML
+        DOMAIN: 'counterplus.ru', // Домен сайта
+        APP_NAME: 'Счетчик+', // Название приложения
+        APP_DESCRIPTION: 'Полезные калькуляторы для решения повседневных задач', // Описание
       },
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public',
+          to: '.',
+          globOptions: {
+            ignore: ['**/index.html'], // Исключаем index.html, так как он обрабатывается HtmlWebpackPlugin
+          },
+        },
+      ],
     }),
     new webpack.DefinePlugin({
       'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL),
