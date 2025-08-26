@@ -4,7 +4,6 @@ import DonateWidget from '@/components/DonateWidget/DonateWidget';
 import Logo from '@/components/Logo/Logo';
 import HeaderDropdown from '@/components/Header/HeaderDropdown';
 import Search from '@/components/Search/Search';
-import BookmarkWidget from '@/components/BookmarkWidget/BookmarkWidget';
 import { APP_CONFIG } from '@/config/app';
 import { SECTIONS } from '@/config/sections';
 import styles from './Header.module.scss';
@@ -69,7 +68,7 @@ const Header: React.FC = () => {
 
         <div className={styles.actions}>
           <Search variant="header" />
-          <BookmarkWidget variant="header" />
+
           <DonateWidget />
 
           <button

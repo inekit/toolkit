@@ -153,6 +153,10 @@
     box-shadow: var(--shadow-xl);
   }
 
+  .actions > div:nth-child(2) {
+    display: none;
+  }
+
   .navOpen {
     right: 0;
   }

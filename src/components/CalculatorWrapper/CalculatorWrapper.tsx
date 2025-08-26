@@ -14,6 +14,10 @@ const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ children }) => {
   const [activeTab, setActiveTab] = useState<'calculator' | 'info' | 'embed'>(
     'calculator'
   );
+  const [embedWidth, setEmbedWidth] = useState('100%');
+  const [embedHeight, setEmbedHeight] = useState('600');
+  const [showBorder, setShowBorder] = useState(true);
+  const [showShadow, setShowShadow] = useState(true);
 
   // Добавляем отладочную информацию
   console.log('CalculatorWrapper params:', location.pathname.split('/'));
@@ -36,7 +40,20 @@ const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ children }) => {
 
   const generateEmbedCode = (calc: Calculator) => {
     const embedUrl = `${window.location.origin}/embed/${sectionId}/${calculatorId}`;
-    return `<iframe src="${embedUrl}" width="100%" height="600" frameborder="0" style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></iframe>`;
+
+    let iframeStyle = 'border: none; border-radius: 8px;';
+    if (showBorder) {
+      iframeStyle += ' border: 2px solid #e5e7eb;';
+    }
+    if (showShadow) {
+      iframeStyle += ' box-shadow: 0 4px 12px rgba(0,0,0,0.1);';
+    }
+
+    return `<iframe src="${embedUrl}" width="${embedWidth}" height="${embedHeight}" frameborder="0" style="${iframeStyle}"></iframe>`;
+  };
+
+  const generateDirectLink = () => {
+    return `${window.location.origin}/embed/${sectionId}/${calculatorId}`;
   };
 
   const copyEmbedCode = async () => {
@@ -44,6 +61,16 @@ const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ children }) => {
     try {
       await navigator.clipboard.writeText(embedCode);
       alert('Код встраивания скопирован в буфер обмена!');
+    } catch (err) {
+      console.error('Ошибка копирования:', err);
+    }
+  };
+
+  const copyDirectLink = async () => {
+    const directLink = generateDirectLink();
+    try {
+      await navigator.clipboard.writeText(directLink);
+      alert('Прямая ссылка скопирована в буфер обмена!');
     } catch (err) {
       console.error('Ошибка копирования:', err);
     }
@@ -127,75 +154,148 @@ const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ children }) => {
         {activeTab === 'info' && (
           <div className={styles.infoTab}>
             <div className={styles.infoSection}>
-              <h3>📋 Описание</h3>
+              <h3>Описание</h3>
               <p>{calculator.description}</p>
             </div>
 
             <div className={styles.infoSection}>
-              <h3>🎯 Как использовать</h3>
-              <ol>
-                <li>Заполните все необходимые поля</li>
-                <li>Нажмите кнопку "Рассчитать"</li>
-                <li>Получите результат с рекомендациями</li>
-              </ol>
-            </div>
-
-            <div className={styles.infoSection}>
-              <h3>💡 Полезные советы</h3>
-              <ul>
-                <li>Всегда берите материалы с небольшим запасом</li>
-                <li>Учитывайте особенности вашего помещения</li>
-                <li>Консультируйтесь с профессионалами для сложных расчетов</li>
-              </ul>
-            </div>
-
-            <div className={styles.infoSection}>
-              <h3>🔗 Похожие калькуляторы</h3>
-              <div className={styles.relatedCalculators}>
-                {calculator.tags.slice(0, 3).map((tag) => (
-                  <span key={tag} className={styles.relatedTag}>
+              <h3>Теги</h3>
+              <div className={styles.tagsList}>
+                {calculator.tags.map((tag) => (
+                  <span key={tag} className={styles.tag}>
                     {tag}
                   </span>
                 ))}
               </div>
+            </div>
+
+            <div className={styles.infoSection}>
+              <h3>Сложность</h3>
+              <span
+                className={`${styles.difficulty} ${
+                  styles[calculator.difficulty]
+                }`}
+              >
+                {calculator.difficulty === 'easy'
+                  ? 'Легко'
+                  : calculator.difficulty === 'medium'
+                  ? 'Средне'
+                  : 'Сложно'}
+              </span>
             </div>
           </div>
         )}
 
         {activeTab === 'embed' && (
           <div className={styles.embedTab}>
-            <div className={styles.embedInfo}>
-              <h3>📱 Встройте калькулятор на ваш сайт</h3>
-              <p>
-                Скопируйте код ниже и вставьте его на страницу вашего сайта.
-                Калькулятор будет работать в iframe и автоматически
-                адаптироваться под дизайн.
-              </p>
-            </div>
+            <div className={styles.embedOptions}>
+              <h3>Настройки встраивания</h3>
 
-            <div className={styles.embedCode}>
-              <div className={styles.codeHeader}>
-                <span>Код для встраивания:</span>
-                <button className={styles.copyBtn} onClick={copyEmbedCode}>
-                  📋 Копировать
-                </button>
+              <div className={styles.optionGroup}>
+                <label>
+                  Ширина:
+                  <input
+                    type="text"
+                    value={embedWidth}
+                    onChange={(e) => setEmbedWidth(e.target.value)}
+                    placeholder="100% или 400px"
+                  />
+                </label>
               </div>
-              <pre className={styles.code}>
-                <code>{generateEmbedCode(calculator)}</code>
-              </pre>
+
+              <div className={styles.optionGroup}>
+                <label>
+                  Высота:
+                  <input
+                    type="text"
+                    value={embedHeight}
+                    onChange={(e) => setEmbedHeight(e.target.value)}
+                    placeholder="600"
+                  />
+                </label>
+              </div>
+
+              <div className={styles.optionGroup}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={showBorder}
+                    onChange={(e) => setShowBorder(e.target.checked)}
+                  />
+                  Показать рамку
+                </label>
+              </div>
+
+              <div className={styles.optionGroup}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={showShadow}
+                    onChange={(e) => setShowShadow(e.target.checked)}
+                  />
+                  Показать тень
+                </label>
+              </div>
             </div>
 
             <div className={styles.embedPreview}>
-              <h4>Предварительный просмотр:</h4>
+              <h3>Предварительный просмотр</h3>
               <div className={styles.previewFrame}>
                 <iframe
                   src={`/embed/${sectionId}/${calculatorId}`}
-                  width="100%"
-                  height="400"
+                  width={embedWidth}
+                  height={embedHeight}
                   frameBorder="0"
-                  title={calculator.title}
+                  style={{
+                    border: showBorder ? '2px solid #e5e7eb' : 'none',
+                    borderRadius: '8px',
+                    boxShadow: showShadow
+                      ? '0 4px 12px rgba(0,0,0,0.1)'
+                      : 'none',
+                  }}
                 />
               </div>
+            </div>
+
+            <div className={styles.embedCode}>
+              <h3>Код для встраивания</h3>
+              <div className={styles.codeContainer}>
+                <pre className={styles.code}>
+                  <code>{generateEmbedCode(calculator)}</code>
+                </pre>
+                <button onClick={copyEmbedCode} className={styles.copyBtn}>
+                  📋 Скопировать код
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.directLink}>
+              <h3>Прямая ссылка</h3>
+              <div className={styles.linkContainer}>
+                <input
+                  type="text"
+                  value={generateDirectLink()}
+                  readOnly
+                  className={styles.linkInput}
+                />
+                <button onClick={copyDirectLink} className={styles.copyBtn}>
+                  📋 Скопировать ссылку
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.embedInstructions}>
+              <h3>Инструкция по встраиванию</h3>
+              <ol>
+                <li>Скопируйте код iframe выше</li>
+                <li>Вставьте его в HTML-код вашей страницы</li>
+                <li>При необходимости измените размеры (width и height)</li>
+                <li>Калькулятор автоматически загрузится на вашем сайте</li>
+              </ol>
+              <p className={styles.note}>
+                <strong>Примечание:</strong> Калькулятор работает без
+                регистрации и не требует дополнительной настройки.
+              </p>
             </div>
           </div>
         )}

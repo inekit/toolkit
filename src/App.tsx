@@ -1,15 +1,77 @@
 import React, { Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
 import HomePage from '@/pages/HomePage/HomePage';
-import RepairPage from '@/pages/RepairPage/RepairPage';
-import BicyclePage from '@/pages/BicyclePage/BicyclePage';
-import OtherPage from '@/pages/OtherPage/OtherPage';
+import CategoryPage from '@/pages/CategoryPage/CategoryPage';
 import TermsPage from '@/pages/TermsPage/TermsPage';
 import CalculatorWrapper from '@/components/CalculatorWrapper/CalculatorWrapper';
+import EmbedCalculator from '@/components/EmbedCalculator/EmbedCalculator';
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
 import YandexMetrika from '@/components/Analytics/YandexMetrika';
 import { SECTIONS } from '@/config/sections';
+
+// Создаем роутер
+const router = createBrowserRouter([
+  // Роуты для встраивания калькуляторов (без лейаута)
+  ...SECTIONS.flatMap((section) =>
+    section.calculators.map((calculator) => ({
+      path: `/embed/${section.id}/${calculator.id}`,
+      element: (
+        <ErrorBoundary>
+          <EmbedCalculator />
+        </ErrorBoundary>
+      ),
+    }))
+  ),
+
+  // Основные роуты с лейаутом
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<div>Загрузка...</div>}>
+            <HomePage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'terms',
+        element: (
+          <Suspense fallback={<div>Загрузка...</div>}>
+            <TermsPage />
+          </Suspense>
+        ),
+      },
+      // Генерируемые страницы категорий
+      ...SECTIONS.map((section) => ({
+        path: section.id,
+        element: (
+          <Suspense fallback={<div>Загрузка...</div>}>
+            <CategoryPage />
+          </Suspense>
+        ),
+      })),
+      // Роуты для отдельных калькуляторов
+      ...SECTIONS.flatMap((section) =>
+        section.calculators.map((calculator) => ({
+          path: `${section.id}/${calculator.id}`,
+          element: (
+            <ErrorBoundary>
+              <Suspense fallback={<div>Загрузка...</div>}>
+                <CalculatorWrapper>
+                  <calculator.component />
+                </CalculatorWrapper>
+              </Suspense>
+            </ErrorBoundary>
+          ),
+        }))
+      ),
+    ],
+  },
+]);
 
 const App: React.FC = () => {
   return (
@@ -17,34 +79,8 @@ const App: React.FC = () => {
       {/* Яндекс.Метрика - замените на ваш ID счетчика */}
       <YandexMetrika counterId="103888039" />
 
-      <Layout>
-        <Suspense fallback={<div>Загрузка...</div>}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/repair" element={<RepairPage />} />
-            <Route path="/bicycle" element={<BicyclePage />} />
-            <Route path="/other" element={<OtherPage />} />
-
-            {/* Роуты для отдельных калькуляторов */}
-            {SECTIONS.map((section) =>
-              section.calculators.map((calculator) => (
-                <Route
-                  key={`${section.id}-${calculator.id}`}
-                  path={`/${section.id}/${calculator.id}`}
-                  element={
-                    <ErrorBoundary>
-                      <CalculatorWrapper>
-                        <calculator.component />
-                      </CalculatorWrapper>
-                    </ErrorBoundary>
-                  }
-                />
-              ))
-            )}
-          </Routes>
-        </Suspense>
-      </Layout>
+      {/* Роутер */}
+      <RouterProvider router={router} />
     </>
   );
 };

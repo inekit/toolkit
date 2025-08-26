@@ -1,10 +1,51 @@
 .logo {
-  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  transition: all var(--transition-normal);
 
   &:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
+    transform: scale(1.05) rotate(2deg);
+    filter: drop-shadow(0 8px 24px rgba(14, 165, 233, 0.3));
   }
+
+  svg {
+    display: block;
+    transition: all var(--transition-normal);
+  }
+
+  &.small svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &.medium svg {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &.large svg {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  &.xlarge svg {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+// Анимация для логотипа
+@keyframes logoGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(14, 165, 233, 0.6));
+  }
+}
+
+.logo:hover svg {
+  animation: logoGlow 2s ease-in-out infinite;
 }
 
 .plusIcon {

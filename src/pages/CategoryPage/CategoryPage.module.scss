@@ -1,0 +1,218 @@
+.categoryPage {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+}
+
+.header {
+  padding: 4rem 0 2rem;
+  text-align: center;
+
+  .categoryInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    .categoryIcon {
+      width: 120px;
+      height: 120px;
+      border-radius: var(--radius-3xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+      box-shadow: var(--shadow-xl);
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2));
+      transition: all var(--transition-normal);
+
+      &:hover {
+        transform: scale(1.05) rotate(5deg);
+        box-shadow: var(--shadow-2xl);
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--gray-900);
+      margin-bottom: 1rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: var(--gray-600);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+  }
+}
+
+.calculators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.calculatorHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  .calculatorIcon {
+    font-size: 2rem;
+    filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.2));
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--gray-900);
+    margin: 0;
+    font-weight: 700;
+  }
+}
+
+.calculatorMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.difficulty {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+
+  &.easy {
+    background: var(--success-50);
+    color: var(--success-700);
+    border: 1px solid var(--success-200);
+  }
+
+  &.medium {
+    background: var(--warning-50);
+    color: var(--warning-700);
+    border: 1px solid var(--warning-200);
+  }
+
+  &.hard {
+    background: var(--error-50);
+    color: var(--error-700);
+    border: 1px solid var(--error-200);
+  }
+}
+
+.categoryStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  .stat {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-100);
+    transition: all var(--transition-normal);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .statNumber {
+      display: block;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-600);
+      margin-bottom: 0.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .statLabel {
+      color: var(--gray-600);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .header {
+    padding: 2rem 0 1rem;
+
+    .categoryInfo {
+      .categoryIcon {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .calculators {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .calculatorMeta {
+    flex-direction: column;
+    align-items: stretch;
+
+    .btn {
+      width: 100%;
+    }
+  }
+
+  .categoryStats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+    margin-top: 2rem;
+
+    .stat {
+      padding: 1.5rem;
+
+      .statNumber {
+        font-size: 2rem;
+      }
+
+      .statLabel {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { APP_CONFIG } from '@/config/app';
 import { SECTIONS } from '@/config/sections';
 import Logo from '@/components/Logo/Logo';
+import Search from '@/components/Search/Search';
 import SEO from '@/components/SEO/SEO';
 import styles from './HomePage.module.scss';
 
 const HomePage: React.FC = () => {
   const categories = SECTIONS;
+  const [showSearch, setShowSearch] = useState(false);
+
+  const handleStartUsing = () => {
+    setShowSearch(true);
+    // Прокручиваем к поиску
+    setTimeout(() => {
+      const searchElement = document.getElementById('homepage-search');
+      if (searchElement) {
+        searchElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+    }, 100);
+  };
+
+  const handleLearnMore = () => {
+    // Прокручиваем к секции "О проекте"
+    const aboutSection = document.getElementById('about-section');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className={styles.homePage}>
@@ -31,10 +56,12 @@ const HomePage: React.FC = () => {
               Ремонт, велосипеды, валюты, единицы измерения и многое другое.
             </p>
             <div className={styles.heroActions}>
-              <Link to="/repair" className="btn btn-primary">
+              <button onClick={handleStartUsing} className="btn btn-primary">
                 Начать использовать
-              </Link>
-              <button className="btn btn-secondary">Узнать больше</button>
+              </button>
+              <button onClick={handleLearnMore} className="btn btn-secondary">
+                Узнать больше
+              </button>
             </div>
           </div>
           <div className={styles.heroVisual}>
@@ -44,6 +71,24 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Поиск секция */}
+      {showSearch && (
+        <section id="homepage-search" className={styles.searchSection}>
+          <div className="container">
+            <div className={styles.searchHeader}>
+              <h2>🔍 Найдите нужный калькулятор</h2>
+              <p>Поиск по всем категориям и инструментам</p>
+            </div>
+            <div className={styles.searchWrapper}>
+              <Search
+                variant="page"
+                placeholder="Поиск калькуляторов и конвертеров..."
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Бизнес секция */}
       <section className={styles.businessSection}>
@@ -232,14 +277,11 @@ const HomePage: React.FC = () => {
         <div className="container">
           <div className={styles.ctaContent}>
             <h2>Готовы начать?</h2>
-            <p>Выберите нужный калькулятор и решите свою задачу прямо сейчас</p>
+            <p>Найдите нужный калькулятор и решите свою задачу прямо сейчас</p>
             <div className={styles.ctaActions}>
-              <Link to="/repair" className="btn btn-primary">
-                Калькуляторы ремонта
-              </Link>
-              <Link to="/bicycle" className="btn btn-secondary">
-                Велосипедные калькуляторы
-              </Link>
+              <button onClick={handleStartUsing} className="btn btn-primary">
+                Начать использовать
+              </button>
             </div>
           </div>
         </div>

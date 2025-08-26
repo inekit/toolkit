@@ -7,14 +7,39 @@
   border: none;
   font-size: 1.25rem;
   cursor: pointer;
-  padding: 0.5rem;
-  border-radius: var(--radius-md);
-  transition: all 0.2s ease-in-out;
+  padding: 0.75rem;
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-normal);
+  color: var(--gray-600);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--primary-100),
+      transparent
+    );
+    transition: left var(--transition-slow);
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
 
   &.header {
     &:hover {
-      background: var(--gray-100);
-      transform: scale(1.1);
+      background: var(--primary-50);
+      color: var(--primary-600);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: var(--shadow-md);
     }
   }
 }
@@ -23,79 +48,217 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background: var(--gray-900);
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
   color: white;
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
   font-size: 0.875rem;
   white-space: nowrap;
   z-index: 1000;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: tooltipFadeIn 0.3s ease-out;
 
   &::before {
     content: '';
     position: absolute;
-    top: -4px;
+    top: -6px;
     right: 1rem;
     width: 0;
     height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 4px solid var(--gray-900);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid rgba(15, 23, 42, 0.95);
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 // Стили для страниц
 .pageBookmark {
   margin: 2rem 0;
-  padding: 1.5rem;
-  background: var(--gray-50);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--gray-200);
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-2xl);
+    padding: 1px;
+    background: linear-gradient(135deg, var(--primary-200), var(--accent-200));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 .bookmarkActions {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 .pageBookmark .bookmarkBtn,
 .pageBookmark .shareBtn {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--primary-200);
-  border-radius: var(--radius-lg);
-  font-weight: 500;
+  padding: 1rem 2rem;
+  border: 2px solid;
+  border-radius: var(--radius-xl);
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all var(--transition-normal);
   background: white;
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+  text-align: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left var(--transition-slow);
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.pageBookmark .bookmarkBtn {
+  border-color: var(--primary-200);
   color: var(--primary-700);
 
   &:hover {
     background: var(--primary-50);
     border-color: var(--primary-300);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
   }
 }
 
 .pageBookmark .shareBtn {
-  border-color: var(--success-200);
-  color: var(--success-700);
+  border-color: var(--accent-200);
+  color: var(--accent-700);
 
   &:hover {
-    background: var(--success-50);
-    border-color: var(--success-300);
+    background: var(--accent-50);
+    border-color: var(--accent-300);
+    box-shadow: var(--shadow-accent);
   }
 }
 
+// Анимация для иконок
+.bookmarkBtn,
+.shareBtn {
+  .icon {
+    transition: all var(--transition-normal);
+  }
+
+  &:hover .icon {
+    transform: scale(1.2);
+  }
+}
+
+// Состояние закладки
+.bookmarked {
+  .bookmarkBtn {
+    color: var(--primary-600);
+    background: var(--primary-50);
+    border-color: var(--primary-300);
+
+    &:hover {
+      background: var(--primary-100);
+      border-color: var(--primary-400);
+    }
+  }
+}
+
+// Адаптивность
 @media (max-width: 768px) {
   .bookmarkActions {
     flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pageBookmark {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
   }
 
   .pageBookmark .bookmarkBtn,
   .pageBookmark .shareBtn {
     width: 100%;
+    min-width: auto;
+    padding: 1rem 1.5rem;
+  }
+
+  .tooltip {
+    right: 50%;
+    transform: translateX(50%);
+    white-space: normal;
+    max-width: 200px;
     text-align: center;
+
+    &::before {
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+}
+
+// Темная тема (если понадобится в будущем)
+@media (prefers-color-scheme: dark) {
+  .pageBookmark {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--gray-900);
+    border-color: rgba(0, 0, 0, 0.1);
+
+    &::before {
+      border-bottom-color: rgba(255, 255, 255, 0.95);
+    }
   }
 }

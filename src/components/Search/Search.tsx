@@ -1,16 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { SECTIONS, getAllCalculators } from '@/config/sections';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { SECTIONS, getAllCalculators, Section } from '@/config/sections';
 import styles from './Search.module.scss';
 
 interface SearchProps {
   variant?: 'header' | 'page';
   placeholder?: string;
+  sectionId?: string; // ID категории для контекстного поиска
 }
 
 const Search: React.FC<SearchProps> = ({
   variant = 'header',
   placeholder = 'Поиск калькуляторов и конвертеров...',
+  sectionId,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -24,6 +26,10 @@ const Search: React.FC<SearchProps> = ({
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Определяем текущую категорию из URL если sectionId не передан
+  const currentSectionId = sectionId || location.pathname.split('/')[1];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -55,28 +61,47 @@ const Search: React.FC<SearchProps> = ({
 
     // Имитация задержки поиска
     setTimeout(() => {
-      const allCalculators = getAllCalculators();
-      const filtered = allCalculators
-        .filter(
-          (calc) =>
-            calc.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            calc.description
-              .toLowerCase()
-              .includes(searchQuery.toLowerCase()) ||
-            calc.tags.some((tag) =>
-              tag.toLowerCase().includes(searchQuery.toLowerCase())
-            )
-        )
-        .map((calc) => {
+      let searchableCalculators;
+
+      if (currentSectionId && currentSectionId !== '') {
+        // Контекстный поиск в конкретной категории
+        const currentSection = SECTIONS.find((s) => s.id === currentSectionId);
+        if (currentSection) {
+          searchableCalculators = currentSection.calculators.map((calc) => ({
+            section: currentSection.id,
+            calculator: calc,
+          }));
+        }
+      } else {
+        // Поиск по всем категориям
+        searchableCalculators = getAllCalculators().map((calc) => {
           const section = SECTIONS.find((s) => s.calculators.includes(calc));
           return {
             section: section?.id || '',
             calculator: calc,
           };
-        })
-        .slice(0, 8); // Ограничиваем результаты
+        });
+      }
 
-      setResults(filtered);
+      if (searchableCalculators) {
+        const filtered = searchableCalculators
+          .filter(
+            (calc) =>
+              calc.calculator.title
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase()) ||
+              calc.calculator.description
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase()) ||
+              calc.calculator.tags.some((tag: string) =>
+                tag.toLowerCase().includes(searchQuery.toLowerCase())
+              )
+          )
+          .slice(0, 8); // Ограничиваем результаты
+
+        setResults(filtered);
+      }
+
       setIsLoading(false);
     }, 300);
   };
@@ -110,6 +135,17 @@ const Search: React.FC<SearchProps> = ({
     }
   };
 
+  // Генерируем placeholder в зависимости от контекста
+  const getPlaceholder = () => {
+    if (currentSectionId && currentSectionId !== '') {
+      const section = SECTIONS.find((s) => s.id === currentSectionId);
+      return section
+        ? `Поиск в ${section.title.toLowerCase()}...`
+        : placeholder;
+    }
+    return placeholder;
+  };
+
   if (variant === 'header') {
     return (
       <div className={styles.searchContainer} ref={searchRef}>
@@ -129,7 +165,7 @@ const Search: React.FC<SearchProps> = ({
                 type="text"
                 value={query}
                 onChange={handleInputChange}
-                placeholder={placeholder}
+                placeholder={getPlaceholder()}
                 className={styles.searchInput}
               />
             </form>
@@ -193,7 +229,7 @@ const Search: React.FC<SearchProps> = ({
             type="text"
             value={query}
             onChange={handleInputChange}
-            placeholder={placeholder}
+            placeholder={getPlaceholder()}
             className={styles.pageSearchInput}
           />
           {query && (
