@@ -24,36 +24,20 @@ const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
     // Создаем скрипт для загрузки Яндекс.Метрики
     const script = document.createElement('script');
     script.async = true;
-    script.src = `https://mc.yandex.ru/metrika/tag.js`;
+    script.innerHTML = `    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103888039', 'ym');
+
+    ym(103888039, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});`;
+    script.id = 'yandex-metrika';
     scriptRef.current = script;
 
     // Обработчик успешной загрузки
     script.onload = () => {
       console.log('✅ Яндекс.Метрика загружена');
-
-      // Ждем немного, чтобы скрипт полностью инициализировался
-      setTimeout(() => {
-        try {
-          // Проверяем, что объект Ya доступен
-          if (window.Ya && window.Ya.Metrika) {
-            window.Ya.Metrika.init({
-              id: parseInt(counterId),
-              defer: true,
-              clickmap: true,
-              trackLinks: true,
-              accurateTrackBounce: true,
-              webvisor: true,
-              ecommerce: true,
-            });
-            isInitialized.current = true;
-            console.log('✅ Яндекс.Метрика инициализирована');
-          } else {
-            console.warn('⚠️ Объект Ya.Metrika недоступен');
-          }
-        } catch (error) {
-          console.error('❌ Ошибка инициализации Яндекс.Метрики:', error);
-        }
-      }, 100);
     };
 
     // Обработчик ошибки загрузки
