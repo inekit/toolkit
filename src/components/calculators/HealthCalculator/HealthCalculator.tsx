@@ -495,7 +495,6 @@ const HealthCalculator: React.FC = () => {
   };
 
   const clearForm = () => {
-    setCalculatorType('bmi');
     setWeight('');
     setHeight('');
     setAge('');
