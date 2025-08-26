@@ -27,8 +27,8 @@ const DonateWidget: React.FC = () => {
         Поддержать
       </button>
 
-      {isOpen && (
-        <div className={styles.dropdown}>
+      {
+        <div className={`${styles.dropdown} ${isOpen ? styles.open : ''}`}>
           <div className={styles.dropdownHeader}>
             <h4>Поддержать проект</h4>
             <p>Выберите сумму для поддержки</p>
@@ -80,7 +80,7 @@ const DonateWidget: React.FC = () => {
             </button>
           </div>
         </div>
-      )}
+      }
     </div>
   );
 };
