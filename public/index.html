@@ -97,7 +97,12 @@
     <title><%= APP_NAME %> - Калькуляторы и конвертеры</title>
 
     <!-- Локальные шрифты Inter -->
-    <link rel="stylesheet" href="<%= PUBLIC_URL %>/fonts/fonts.css" />
+    <link
+      rel="stylesheet"
+      href="<%= PUBLIC_URL %>/fonts/fonts.css"
+      media="print"
+      onload="this.media='all'; this.onload=null;"
+    />
   </head>
   <body>
     <div id="root"></div>
