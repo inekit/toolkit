@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface YandexMetrikaProps {
   counterId: string;
@@ -12,9 +12,12 @@ declare global {
 }
 
 const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
+  const scriptRef = useRef<HTMLScriptElement | null>(null);
+  const isInitialized = useRef(false);
+
   useEffect(() => {
     // Проверяем, что Яндекс.Метрика еще не загружена
-    if (window.ym) {
+    if (window.ym || isInitialized.current) {
       return;
     }
 
@@ -22,28 +25,49 @@ const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://mc.yandex.ru/metrika/tag.js`;
+    scriptRef.current = script;
 
+    // Обработчик успешной загрузки
     script.onload = () => {
-      // Инициализируем счетчик
-      if (window.Ya) {
-        window.Ya.Metrika.init({
-          id: parseInt(counterId),
-          defer: true,
-          clickmap: true,
-          trackLinks: true,
-          accurateTrackBounce: true,
-          webvisor: true,
-          ecommerce: true,
-        });
-      }
+      console.log('✅ Яндекс.Метрика загружена');
+
+      // Ждем немного, чтобы скрипт полностью инициализировался
+      setTimeout(() => {
+        try {
+          // Проверяем, что объект Ya доступен
+          if (window.Ya && window.Ya.Metrika) {
+            window.Ya.Metrika.init({
+              id: parseInt(counterId),
+              defer: true,
+              clickmap: true,
+              trackLinks: true,
+              accurateTrackBounce: true,
+              webvisor: true,
+              ecommerce: true,
+            });
+            isInitialized.current = true;
+            console.log('✅ Яндекс.Метрика инициализирована');
+          } else {
+            console.warn('⚠️ Объект Ya.Metrika недоступен');
+          }
+        } catch (error) {
+          console.error('❌ Ошибка инициализации Яндекс.Метрики:', error);
+        }
+      }, 100);
     };
 
+    // Обработчик ошибки загрузки
+    script.onerror = () => {
+      console.error('❌ Ошибка загрузки скрипта Яндекс.Метрики');
+    };
+
+    // Добавляем скрипт в head
     document.head.appendChild(script);
 
     // Очистка при размонтировании
     return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
+      if (scriptRef.current && scriptRef.current.parentNode) {
+        scriptRef.current.parentNode.removeChild(scriptRef.current);
       }
     };
   }, [counterId]);
@@ -51,8 +75,12 @@ const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
   // Отслеживаем изменения маршрута
   useEffect(() => {
     const handleRouteChange = () => {
-      if (window.ym) {
-        window.ym(parseInt(counterId), 'hit', window.location.href);
+      if (window.ym && isInitialized.current) {
+        try {
+          window.ym(parseInt(counterId), 'hit', window.location.href);
+        } catch (error) {
+          console.error('❌ Ошибка отслеживания маршрута:', error);
+        }
       }
     };
 
