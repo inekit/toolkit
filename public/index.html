@@ -2,74 +2,72 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
     <link
       rel="icon"
-      href="%PUBLIC_URL%/icon-16x16.png"
+      href="<%= PUBLIC_URL %>/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      href="<%= PUBLIC_URL %>/icon-16x16.png"
       sizes="16x16"
       type="image/png"
     />
     <link
       rel="icon"
-      href="%PUBLIC_URL%/icon-32x32.png"
+      href="<%= PUBLIC_URL %>/icon-32x32.png"
       sizes="32x32"
       type="image/png"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon-192x192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="apple-touch-icon" href="<%= PUBLIC_URL %>/icon-192x192.png" />
+    <link rel="manifest" href="<%= PUBLIC_URL %>/manifest.json" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#3B82F6" />
     <meta name="color-scheme" content="light dark" />
 
     <!-- SEO Meta Tags -->
-    <meta
-      name="description"
-      content="Бесплатные калькуляторы и конвертеры для решения бытовых задач. Ремонт, велосипеды, конвертеры валют и единиц измерения."
-    />
+    <meta name="description" content="<%= APP_DESCRIPTION %>" />
     <meta
       name="keywords"
       content="калькуляторы, конвертеры, ремонт, велосипеды, бытовые задачи, бесплатные инструменты"
     />
-    <meta name="author" content="Счетчик+" />
+    <meta name="author" content="<%= APP_NAME %>" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://counterplus.ru/" />
-    <meta property="og:title" content="Счетчик+ - Калькуляторы и конвертеры" />
+    <meta property="og:url" content="https://<%= DOMAIN %>/" />
     <meta
-      property="og:description"
-      content="Бесплатные калькуляторы и конвертеры для решения бытовых задач"
+      property="og:title"
+      content="<%= APP_NAME %> - Калькуляторы и конвертеры"
     />
-    <meta property="og:image" content="%PUBLIC_URL%/icon-512x512.png" />
+    <meta property="og:description" content="<%= APP_DESCRIPTION %>" />
+    <meta property="og:image" content="<%= PUBLIC_URL %>/icon-512x512.png" />
     <meta property="og:locale" content="ru_RU" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://counterplus.ru/" />
+    <meta property="twitter:url" content="https://<%= DOMAIN %>/" />
     <meta
       property="twitter:title"
-      content="Счетчик+ - Калькуляторы и конвертеры"
+      content="<%= APP_NAME %> - Калькуляторы и конвертеры"
     />
-    <meta
-      property="twitter:description"
-      content="Бесплатные калькуляторы и конвертеры для решения бытовых задач"
-    />
-    <meta property="og:image" content="%PUBLIC_URL%/icon-512x512.png" />
+    <meta property="twitter:description" content="<%= APP_DESCRIPTION %>" />
+    <meta property="og:image" content="<%= PUBLIC_URL %>/icon-512x512.png" />
 
     <!-- Дополнительные мета-теги -->
-    <meta name="application-name" content="Счетчик+" />
+    <meta name="application-name" content="<%= APP_NAME %>" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Счетчик+" />
+    <meta name="apple-mobile-web-app-title" content="<%= APP_NAME %>" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="msapplication-TileColor" content="#3B82F6" />
     <meta name="msapplication-tap-highlight" content="no" />
 
-    <base href="/" />
-    <title>Счетчик+ - Калькуляторы и конвертеры</title>
+    <base href="<%= PUBLIC_URL %>" />
+    <title><%= APP_NAME %> - Калькуляторы и конвертеры</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -26,7 +26,10 @@
     "scripts": {
         "start": "webpack serve --mode development",
         "build": "webpack --mode production",
-        "type-check": "tsc --noEmit"
+        "build:prod": "NODE_ENV=production PUBLIC_URL=https://counterplus.ru webpack --mode production",
+        "build:staging": "NODE_ENV=production PUBLIC_URL=https://staging.counterplus.ru webpack --mode production",
+        "type-check": "tsc --noEmit",
+        "deploy": "npm run build:prod && chmod +x build-production.sh && ./build-production.sh"
     },
     "browserslist": {
         "production": [
