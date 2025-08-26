@@ -1,6 +1,6 @@
 .dropdown {
   position: absolute;
-  top: 90%;
+  top: 100%;
   left: calc(-200px + 50%);
   right: 0;
   background: white;
@@ -23,6 +23,18 @@
     border-left: 1px solid var(--gray-100);
     border-top: 1px solid var(--gray-100);
     transform: translateX(-50%) rotate(45deg);
+  }
+
+  .dropdownTouch {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 30%;
+    height: 10px;
+    z-index: 100;
+    background: transparent;
   }
 }
 

@@ -18,6 +18,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
 
   return (
     <div className={styles.dropdown} onMouseLeave={onClose}>
+      <div className={styles.dropdownTouch}></div>
       <div className={styles.dropdownContent}>
         <div className={styles.sectionHeader}>
           <h3>{section.title}</h3>

@@ -11,7 +11,6 @@ import { isMobile } from 'react-device-detect';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -35,12 +34,7 @@ const Header: React.FC = () => {
             Главная
           </Link>
           {SECTIONS.map((item) => (
-            <div
-              key={item.path}
-              className={styles.navItem}
-              onMouseEnter={() => !isMobile && setActiveDropdown(item.id)}
-              onMouseLeave={() => !isMobile && setActiveDropdown(null)}
-            >
+            <div key={item.path} className={styles.navItem}>
               <Link
                 to={item.path}
                 className={`${styles.navLink} ${
@@ -50,12 +44,14 @@ const Header: React.FC = () => {
               >
                 {item.shortTitle}
               </Link>
-              {!isMobile && activeDropdown === item.id && (
+              {!isMobile ? (
                 <HeaderDropdown
                   section={SECTIONS.find((s) => s.id === item.id)!}
                   isOpen={true}
-                  onClose={() => setActiveDropdown(null)}
+                  onClose={() => {}}
                 />
+              ) : (
+                <></>
               )}
             </div>
           ))}
