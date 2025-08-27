@@ -25,15 +25,28 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
           <p>{section.description}</p>
         </div>
 
-        <div className={styles.calculatorsList}>
+        <div className={styles.calculatorsList} role="list">
           {section.calculators.slice(0, 6).map((calculator) => (
             <Link
               key={calculator.id}
               to={`/${section.id}/${calculator.id}`}
               className={styles.calculatorItem}
               onClick={onClose}
+              title={`Открыть ${calculator.title}`}
+              aria-label={`Калькулятор: ${calculator.title}. ${
+                calculator.description
+              }. Сложность: ${
+                calculator.difficulty === 'easy'
+                  ? 'Легко'
+                  : calculator.difficulty === 'medium'
+                  ? 'Средне'
+                  : 'Сложно'
+              }`}
+              role="listitem"
             >
-              <span className={styles.calculatorIcon}>{calculator.icon}</span>
+              <span className={styles.calculatorIcon} aria-hidden="true">
+                {calculator.icon}
+              </span>
               <div className={styles.calculatorInfo}>
                 <span className={styles.calculatorTitle}>
                   {calculator.title}
@@ -45,6 +58,13 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
               <span
                 className={`${styles.difficulty} ${
                   styles[calculator.difficulty]
+                }`}
+                aria-label={`Сложность: ${
+                  calculator.difficulty === 'easy'
+                    ? 'Легко'
+                    : calculator.difficulty === 'medium'
+                    ? 'Средне'
+                    : 'Сложно'
                 }`}
               >
                 {calculator.difficulty === 'easy'
@@ -58,7 +78,12 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
         </div>
 
         <div className={styles.dropdownFooter}>
-          <Link to={section.path} className={styles.viewAllLink}>
+          <Link
+            to={section.path}
+            className={styles.viewAllLink}
+            title={`Перейти к ${section.title.toLowerCase()}`}
+            aria-label={`Показать все калькуляторы в разделе ${section.title.toLowerCase()}`}
+          >
             Посмотреть все калькуляторы →
           </Link>
         </div>

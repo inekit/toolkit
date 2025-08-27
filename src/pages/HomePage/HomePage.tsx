@@ -5,6 +5,7 @@ import { SECTIONS } from '@/config/sections';
 import Logo from '@/components/Logo/Logo';
 import Search from '@/components/Search/Search';
 import SEO from '@/components/SEO/SEO';
+import StructuredData from '@/components/SEO/StructuredData';
 import styles from './HomePage.module.scss';
 
 const HomePage: React.FC = () => {
@@ -39,11 +40,12 @@ const HomePage: React.FC = () => {
   return (
     <div className={styles.homePage}>
       <SEO
-        title="Главная страница"
+        title="Счетчик+ - бесплатные калькуляторы и конвертеры"
         description="Бесплатные калькуляторы и конвертеры для решения бытовых задач. Ремонт, велосипеды, конвертеры валют и единиц измерения."
         keywords="калькуляторы, конвертеры, ремонт, велосипеды, бытовые задачи, бесплатные инструменты"
         type="website"
       />
+      <StructuredData type="website" />
 
       {/* Hero секция */}
       <section className={styles.hero}>
@@ -237,6 +239,8 @@ const HomePage: React.FC = () => {
                   to={`/${category.id}`}
                   className={styles.categoryButton}
                   style={{ borderColor: category.color, color: category.color }}
+                  title={`Перейти к ${category.title.toLowerCase()}`}
+                  aria-label={`Открыть все калькуляторы в разделе ${category.title.toLowerCase()}`}
                 >
                   Перейти к калькуляторам
                 </Link>

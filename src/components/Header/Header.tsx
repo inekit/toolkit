@@ -23,18 +23,29 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link to="/" className={styles.logo}>
+        <Link
+          to="/"
+          className={styles.logo}
+          title="Перейти на главную страницу"
+          aria-label="Перейти на главную страницу"
+        >
           <Logo size="medium" className={styles.logoIcon} />
           <span className={styles.logoText}>{APP_CONFIG.name}</span>
         </Link>
 
-        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
+        <nav
+          className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}
+          aria-label="Главная навигация"
+          role="navigation"
+        >
           <Link
             to="/"
             className={`${styles.navLink} ${
               isActive('/') ? styles.active : ''
             }`}
             onClick={() => setIsMenuOpen(false)}
+            title="Перейти на главную страницу"
+            aria-label="Главная страница"
           >
             Главная
           </Link>
@@ -47,6 +58,9 @@ const Header: React.FC = () => {
                 }`}
                 onMouseEnter={() => !isMobile && setAbleToOpenDropdown(true)}
                 onClick={() => setIsMenuOpen(false)}
+                title={`Перейти к ${item.title.toLowerCase()}`}
+                aria-label={`Калькуляторы для ${item.title.toLowerCase()}`}
+                aria-expanded={isActive(item.path)}
               >
                 {item.shortTitle}
               </Link>
