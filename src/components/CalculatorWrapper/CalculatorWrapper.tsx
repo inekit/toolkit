@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getCalculatorById, getSectionById, SECTIONS } from '@/config/sections';
 import { Calculator } from '@/config/sections';
 import SEO from '@/components/SEO/SEO';
@@ -344,9 +344,11 @@ const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ children }) => {
           <h3>Похожие калькуляторы</h3>
           <div className={styles.similarGrid}>
             {similarCalculators.map((calc) => (
-              <a
+              <Link
+                to={`/${calc.sectionId}/${calc.id}`}
                 key={calc.id}
-                href={`/${calc.sectionId}/${calc.id}`}
+                title={`Перейти к ${calc.title.toLowerCase()}`}
+                aria-label={`Перейти к ${calc.title.toLowerCase()}`}
                 className={styles.similarCard}
               >
                 <div className={styles.similarIcon}>{calc.icon}</div>
@@ -361,7 +363,7 @@ const CalculatorWrapper: React.FC<CalculatorWrapperProps> = ({ children }) => {
                     ))}
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

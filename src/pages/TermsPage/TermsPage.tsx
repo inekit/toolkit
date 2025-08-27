@@ -128,7 +128,12 @@ const TermsPage: React.FC = () => {
                 <div>
                   <strong>Донат</strong>
                   <p>Поддержите развитие сервиса любой суммой</p>
-                  <Link to="/" className={styles.donateBtn}>
+                  <Link
+                    to="/"
+                    className={styles.donateBtn}
+                    title="Перейти на страницу поддержки проекта"
+                    aria-label="Перейти на страницу поддержки проекта"
+                  >
                     Поддержать проект
                   </Link>
                 </div>
@@ -192,7 +197,12 @@ const TermsPage: React.FC = () => {
               уведомлять пользователей через обновления на сайте.
             </p>
             <div className={styles.backToHome}>
-              <Link to="/" className={styles.homeBtn}>
+              <Link
+                to="/"
+                className={styles.homeBtn}
+                title="Перейти на главную страницу"
+                aria-label="Перейти на главную страницу"
+              >
                 ← Вернуться на главную
               </Link>
             </div>

@@ -124,6 +124,8 @@ const CategoryPage: React.FC = () => {
                 </span>
                 <Link
                   to={`/${category.id}/${calculator.id}`}
+                  title={`Перейти к ${calculator.title.toLowerCase()}`}
+                  aria-label={`Перейти к ${calculator.title.toLowerCase()}`}
                   className="btn btn-primary"
                 >
                   Открыть калькулятор
