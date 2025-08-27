@@ -6,14 +6,15 @@ Allow: /repair/
 Allow: /bicycle/
 Allow: /other/
 Allow: /terms
+Allow: /finance/
+Allow: /health/
 
-# Запрещаем индексацию технических файлов
-Disallow: /static/
+# Запрещаем доступ к служебным файлам
 Disallow: /api/
 Disallow: /admin/
 
-# Указываем расположение sitemap
+# Sitemap
 Sitemap: https://counterplus.ru/sitemap.xml
 
-# Время задержки между запросами (в секундах)
+# Crawl-delay для уважительных роботов
 Crawl-delay: 1
