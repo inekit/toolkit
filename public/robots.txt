@@ -1,20 +1,8 @@
 User-agent: *
 Allow: /
 
-# Разрешаем индексацию всех страниц
-Allow: /repair/
-Allow: /bicycle/
-Allow: /other/
-Allow: /terms
-Allow: /finance/
-Allow: /health/
-
-# Запрещаем доступ к служебным файлам
-Disallow: /api/
-Disallow: /admin/
-
 # Sitemap
 Sitemap: https://counterplus.ru/sitemap.xml
 
-# Crawl-delay для уважительных роботов
+# Crawl-delay
 Crawl-delay: 1
