@@ -10,7 +10,6 @@ import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
 import YandexMetrika from '@/components/Analytics/YandexMetrika';
 import { SECTIONS } from '@/config/sections';
 
-// Создаем роутер
 const router = createBrowserRouter([
   // Роуты для встраивания калькуляторов (без лейаута)
   ...SECTIONS.flatMap((section) =>
@@ -76,10 +75,7 @@ const router = createBrowserRouter([
 const App: React.FC = () => {
   return (
     <>
-      {/* Яндекс.Метрика - замените на ваш ID счетчика */}
       <YandexMetrika counterId="103888039" />
-
-      {/* Роутер */}
       <RouterProvider router={router} />
     </>
   );

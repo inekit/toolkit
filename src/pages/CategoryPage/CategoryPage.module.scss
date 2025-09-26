@@ -164,7 +164,6 @@
   }
 }
 
-// Адаптивность
 @media (max-width: 768px) {
   .categoryPage {
     padding-top: 70px;
@@ -207,7 +206,6 @@
     margin-bottom: 2rem;
   }
 
-  // Улучшаем карточки калькуляторов для мобильных
   .calculators .card {
     padding: 1.25rem;
     border-radius: var(--radius-xl);
@@ -227,13 +225,13 @@
 
     .calculatorIcon {
       font-size: 1.75rem;
-      min-width: 2rem; // Фиксированная ширина для иконки
+      min-width: 2rem;
     }
 
     h3 {
       font-size: 1.25rem;
       line-height: 1.3;
-      flex: 1; // Иконка занимает фиксированное место, заголовок - остальное
+      flex: 1;
     }
   }
 
@@ -244,7 +242,7 @@
     margin-top: 1rem;
 
     .difficulty {
-      align-self: flex-start; // Выравниваем сложность по левому краю
+      align-self: flex-start;
       font-size: 0.8rem;
       padding: 0.4rem 0.8rem;
     }
@@ -429,7 +427,6 @@
   }
 }
 
-// Улучшения для touch устройств
 @media (hover: none) and (pointer: coarse) {
   .calculators .card {
     &:active {

@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
-// Определяем переменные окружения
 const isProduction = process.env.NODE_ENV === 'production';
 const PUBLIC_URL =
   process.env.PUBLIC_URL || (isProduction ? 'https://counterplus.ru/' : '/');
@@ -79,9 +78,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       templateParameters: {
-        PUBLIC_URL: PUBLIC_URL, // Передается в HTML
-        DOMAIN: 'counterplus.ru', // Домен сайта
-        APP_NAME: 'Счетчик+', // Название приложения
+        PUBLIC_URL: PUBLIC_URL,
+        DOMAIN: 'counterplus.ru',
+        APP_NAME: 'Счетчик+',
         APP_DESCRIPTION: 'Полезные калькуляторы для решения повседневных задач', // Описание
       },
     }),
@@ -91,7 +90,7 @@ module.exports = {
           from: 'public',
           to: '.',
           globOptions: {
-            ignore: ['**/index.html'], // Исключаем index.html, так как он обрабатывается HtmlWebpackPlugin
+            ignore: ['**/index.html'],
           },
         },
       ],

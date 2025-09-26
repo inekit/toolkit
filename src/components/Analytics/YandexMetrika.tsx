@@ -16,12 +16,10 @@ const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
   const isInitialized = useRef(false);
 
   useEffect(() => {
-    // Проверяем, что Яндекс.Метрика еще не загружена
     if (window.ym || isInitialized.current) {
       return;
     }
 
-    // Создаем скрипт для загрузки Яндекс.Метрики
     const script = document.createElement('script');
     script.async = true;
     script.innerHTML = `    (function(m,e,t,r,i,k,a){
@@ -35,20 +33,16 @@ const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
     script.id = 'yandex-metrika';
     scriptRef.current = script;
 
-    // Обработчик успешной загрузки
     script.onload = () => {
       console.log('✅ Яндекс.Метрика загружена');
     };
 
-    // Обработчик ошибки загрузки
     script.onerror = () => {
       console.error('❌ Ошибка загрузки скрипта Яндекс.Метрики');
     };
 
-    // Добавляем скрипт в head
     document.head.appendChild(script);
 
-    // Очистка при размонтировании
     return () => {
       if (scriptRef.current && scriptRef.current.parentNode) {
         scriptRef.current.parentNode.removeChild(scriptRef.current);
@@ -68,7 +62,6 @@ const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
       }
     };
 
-    // Отслеживаем изменения URL
     const originalPushState = history.pushState;
     const originalReplaceState = history.replaceState;
 
@@ -82,7 +75,6 @@ const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
       handleRouteChange();
     };
 
-    // Отслеживаем popstate (навигация назад/вперед)
     window.addEventListener('popstate', handleRouteChange);
 
     return () => {
@@ -92,7 +84,7 @@ const YandexMetrika: React.FC<YandexMetrikaProps> = ({ counterId }) => {
     };
   }, [counterId]);
 
-  return null; // Компонент не рендерит ничего
+  return null;
 };
 
 export default YandexMetrika;

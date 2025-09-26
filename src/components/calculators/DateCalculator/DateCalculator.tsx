@@ -23,7 +23,6 @@ const DateCalculator: React.FC = () => {
       return;
     }
 
-    // Разница в миллисекундах
     const diffTime = Math.abs(end.getTime() - start.getTime());
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 

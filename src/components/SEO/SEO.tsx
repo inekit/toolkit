@@ -156,7 +156,7 @@ const SEO: React.FC<SEOProps> = ({
     document.head.appendChild(script);
   };
 
-  return null; // Компонент не рендерит ничего
+  return null;
 };
 
 export default SEO;

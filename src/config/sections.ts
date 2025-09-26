@@ -332,7 +332,6 @@ export const SECTIONS: Section[] = [
   },
 ];
 
-// Вспомогательные функции
 export const getSectionById = (id: string): Section | undefined => {
   return SECTIONS.find((section) => section.id === id);
 };
